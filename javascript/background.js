@@ -11,10 +11,10 @@ class Background {
         this.hImg2 = 50;             // bottom image roofs
         this.y = 0;
         this.yImg2 = canvas.height - this.hImg2;   // bottom image roofs
-        this.speed = 2;
+        this.speed = 1;
     }
 
-    moveBackground() {
+    moveBackground = () => {
         // The background image has scroll all the way left relative to canvas
         if (this.x <= -this.w + this.speed) {
             this.x = this.w;
@@ -30,7 +30,7 @@ class Background {
         }
     }
 
-    drawBackground() {
+    drawBackground = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
         ctx.drawImage(this.img, this.x2, this.y, this.w, this.h);
         ctx.drawImage(this.img2, this.x, this.yImg2, this.w, this.hImg2);

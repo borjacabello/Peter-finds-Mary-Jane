@@ -15,7 +15,7 @@ class Player {
         this.maxSpeed = 3.6; // Velocity in pixels per frame, to use when movement begins
     }
 
-    onGround = () => {
+    playerOnGround = () => {
         // Return if the player is on the air
         return this.y >= canvas.height - this.h - this.bottomMargin;
     }
@@ -42,9 +42,9 @@ class Player {
 
         // Vertical movement for every frame
         this.y += this.vy;
-        if (arrPressedKeys.includes("KeyW") && this.onGround()) {
+        if (arrPressedKeys.includes("KeyW") && this.playerOnGround()) {
             this.vy -= 23;
-        } else if (!this.onGround()) {
+        } else if (!this.playerOnGround()) {
         // vy is decreasing 20 pixels per animation frame, but starts to increase in the air by
         // 1 (this.gravity), and when gravity is higher than vy(0) it starts to fall down
             this.vy += this.gravity;

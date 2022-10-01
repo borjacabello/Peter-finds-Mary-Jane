@@ -7,7 +7,7 @@ const gameOverScreen = document.querySelector("#gameover-screen")
 
 
 let gameObj;
-let arrPressedKeys = []; //! cambiar de global a otro sitio
+let arrPressedKeys = [];
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
@@ -21,7 +21,7 @@ const startGame = () => {
 
   // crear una nueva versión del juego
   gameObj = new Game();
-  console.log(gameObj);
+  //console.log(gameObj);
 
   // iniciará el juego, ejecutar el método gameLoop
   gameObj.gameLoop();
