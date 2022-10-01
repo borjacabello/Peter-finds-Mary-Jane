@@ -1,0 +1,39 @@
+class Background {
+    constructor() {
+        this.img = new Image();
+        this.img.src = "./images/test.png";     // background images
+        this.img2 = new Image();      
+        this.img2.src = "./images/roof.png"     // bottom image roofs
+        this.w = canvas.width;
+        this.h = canvas.height;
+        this.x = 0;                  // background image 1 & bottom image 1
+        this.x2 = canvas.width;      // background image 2 & bottom image 2
+        this.hImg2 = 50;             // bottom image roofs
+        this.y = 0;
+        this.yImg2 = canvas.height - this.hImg2;   // bottom image roofs
+        this.speed = 2;
+    }
+
+    moveBackground() {
+        // The background image has scroll all the way left relative to canvas
+        if (this.x <= -this.w + this.speed) {
+            this.x = this.w;
+        } else {
+            this.x -= this.speed;
+        }
+
+        // Move the 2nd background to the left
+        if (this.x2 <= -this.w + this.speed) {
+            this.x2 = this.w;
+        } else {
+            this.x2 -= this.speed;
+        }
+    }
+
+    drawBackground() {
+        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        ctx.drawImage(this.img, this.x2, this.y, this.w, this.h);
+        ctx.drawImage(this.img2, this.x, this.yImg2, this.w, this.hImg2);
+        ctx.drawImage(this.img2, this.x2, this.yImg2, this.w, this.hImg2);
+    }
+}
