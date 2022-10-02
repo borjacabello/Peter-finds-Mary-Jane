@@ -30,8 +30,9 @@ class Background {
         }
     }
 
+    // Two background images to scroll and two bottom roof images to scroll
     drawBackground = () => {
-        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
+        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);     
         ctx.drawImage(this.img, this.x2, this.y, this.w, this.h);
         ctx.drawImage(this.img2, this.x, this.yImg2, this.w, this.hImg2);
         ctx.drawImage(this.img2, this.x2, this.yImg2, this.w, this.hImg2);

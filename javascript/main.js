@@ -7,38 +7,37 @@ const gameOverScreen = document.querySelector("#gameover-screen")
 
 
 let gameObj;
-let arrPressedKeys = [];
+let arrPressedKeys = []; // To hold the eventListener (below in this page) actions
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
   //console.log("iniciando el juego");
 
-  // ocultar la pantalla de inicio
-  //startScreen.style.display = "none";
+  // Hiding initial screen when "Start" button is pressed
+  startScreen.style.display = "none";
 
-  // mostrar el canvas
-  //canvas.style.display = "block";
+  // Display canvas
+  canvas.style.display = "block";
 
-  // crear una nueva versión del juego
+  // New Game version created
   gameObj = new Game();
   //console.log(gameObj);
 
-  // iniciará el juego, ejecutar el método gameLoop
+  // New Game version initialized
   gameObj.gameLoop();
 };
 
 
 
 // * ADD EVENT LISTENERS
-//startBtn.addEventListener("click", startGame);
-startGame();
+startBtn.addEventListener("click", startGame);
+//startGame();
 
 
 // Gets the current pressed key and checks if it has been previously added to the array
 window.addEventListener('keydown', (event) => {
 
-    if ((   event.code === "KeyS" ||
-            event.code === "KeyW" ||
+    if ((   event.code === "KeyW" ||
             event.code === "KeyA" ||
             event.code === "KeyD")
         && arrPressedKeys.indexOf(event.code) === -1) {
@@ -49,8 +48,7 @@ window.addEventListener('keydown', (event) => {
 
 window.addEventListener('keyup', (event) => {
 
-    if (    event.code === "KeyS" ||
-            event.code === "KeyW" ||
+    if (    event.code === "KeyW" ||
             event.code === "KeyA" ||
             event.code === "KeyD") {
         arrPressedKeys.splice(arrPressedKeys.indexOf(event.code), 1)

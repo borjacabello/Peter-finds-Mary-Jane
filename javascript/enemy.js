@@ -9,7 +9,7 @@ class AirEnemy {
         this.vx = (Math.random() * 1) + 2;                  // Random x speed for each one of them
         this.vy = 0;
         this.type = "air_enemy";
-        this.existsOnScreen = true;
+        this.existsOnScreen = true;  // enemy hasn't gone all the way through the canvas left edge
     }
 
     moveAirEnemy = () => {

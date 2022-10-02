@@ -33,7 +33,7 @@
     margin: 50px;
   }
   
-  #splash-screen,
+  #my-canvas,
   #gameover-screen {
     display: none; /* oculta este elemento y todo lo interno*/
   }
