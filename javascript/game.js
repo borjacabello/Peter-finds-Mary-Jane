@@ -90,7 +90,7 @@ class Game {
     this.isGameOn = false;
 
     // Hide Canvas
-    canvas.style.display = "none";
+    gameScreen.style.display = "none";
 
     // "Game Over" screen displayed
     gameOverScreen.style.display = "flex";

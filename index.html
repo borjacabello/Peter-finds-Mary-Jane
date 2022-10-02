@@ -1,36 +1,85 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <link rel="stylesheet" href="./styles/style.css">
-</head>
-<body>
-    <div class="container">
-        <!-- SPLASH SCREEN -->
-        <div id="splash-screen" class="container">
-          <img src="" width="500" alt="logo" />
-          <button id="start-btn">Start!</button>
-        </div>
-  
-        <!-- GAME SCREEN -->
-        <canvas id="my-canvas" width="600" height="400"></canvas>
-  
-        <!-- GAME OVER SCREEN -->
-        <div id="gameover-screen" class="container">
-          <img src="" width="500" alt="logo" />
-          <button id="restart-btn">Play Again!</button>
-        </div>
-      </div>
+    <link rel="stylesheet" href="./styles/style.css" />
+  </head>
+  <body>
+    <!-- MAIN SCREEN -->
+    <div id="main-screen">
 
-      <script src="./javascript/background.js"></script>
-      <script src="./javascript/player.js"></script>
-      <script src="./javascript/enemy.js"></script>
-      <script src="./javascript/spiderweb.js"></script>
-      <script src="./javascript/game.js"></script>
-      <script src="./javascript/main.js"></script>
+      <section id="header">
+        <h1>Peter finds Mary Jane</h1>
+        <p>
+          The villains have captured Mary Jane, will Spider-man (you) be able to
+          rescue her?
+        </p>
+        <img src="./images/spiderman-main-screen.png" alt="spiderman-image" />
+        <button id="start-btn">PLAY GAME</button>
+      </section>
+
+      <section id="instructions">
+        <h2>Instructions</h2>
+        <p>
+          Try to kill some of the most famous villains Spider-man has faced
+          during his travel and you probably will find Mary Jane at some point.
+        </p>
+        <h3>Score</h3>
+        <p>
+          There will appear some kind of air or ground enemies along your way.
+          Each killed enemy will increase your total score by 25 points. Kill as
+          much of them as you can!
+        </p>
+        <h3>Gifts</h3>
+        <p>
+          Mary Jane will be happier if you collect some of the special gifts
+          that will appear on the air. Each of them will increase your "Gifts"
+          marker by one.
+        </p>
+      </section>
+
+      <section id="commands">
+        <h2>Commands</h2>
+        <div id="command-images">
+          <img src="./images/keyboard-a.png" alt="keyboard-a-key" />
+          <img src="./images/keyboard-w.png" alt="keyboard-w-key" />
+          <img src="./images/keyboard-d.png" alt="keyboard-d-key" />
+        </div>
+        <ul>
+          <li>Move left</li>
+          <li>Move up</li>
+          <li>Move right</li>
+        </ul>
+        <div>
+          <img src="./images/keyboard-space.png" alt="keyboard-space-key" />
+          <p>Shoot</p>
+        </div>
+      </section>
     </div>
-</body>
+
+    <!-- GAME SCREEN -->
+    <div id = "game-screen">
+      <canvas id="my-canvas" width="600" height="400"></canvas>
+      <div>
+        <h1>Score:</h1>
+        <h1>Gifts:</h1>
+      </div>
+    </div>
+
+    <!-- GAME OVER SCREEN -->
+    <div id="gameover-screen">
+      <img src="" width="500" alt="logo" />
+      <button id="restart-btn">Play Again!</button>
+    </div>
+
+    <script src="./javascript/background.js"></script>
+    <script src="./javascript/player.js"></script>
+    <script src="./javascript/enemy.js"></script>
+    <script src="./javascript/spiderweb.js"></script>
+    <script src="./javascript/game.js"></script>
+    <script src="./javascript/main.js"></script>
+  </body>
 </html>

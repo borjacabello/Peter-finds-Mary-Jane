@@ -1,39 +1,97 @@
 /* Para asegurarnos de que la página es igual en diferentes navegadores*/
 * {
-    margin: 0;
-    /*padding: 0;*/
-    box-sizing: border-box;
-  }
-  
-  body {
-    background-color: darkgray;
-  }
-  
-  #my-canvas {
-    background-color: lightgray;
-    max-width: 100%;
-    max-height: 100%;
-  }
-  
-  #start-btn,
-  #restart-btn {
-    background-color: green;
-    color: white;
-    padding: 20px;
-    font-size: 20px;
-    margin-top: 40px;
-    border-radius: 10px;
-  }
-  
-  .container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin: 50px;
-  }
-  
-  #my-canvas,
-  #gameover-screen {
-    display: none; /* oculta este elemento y todo lo interno*/
-  }
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  /*background-color: rgb(20, 30, 40);*/
+}
+
+/** MAIN SCREEN */
+#start-btn {
+  background-color: green;
+  color: white;
+  padding: 20px;
+  font-size: 20px;
+  margin-top: 40px;
+  border-radius: 10px;
+}
+
+#main-screen {
+  background-image: url("../images/wallpaper.jpg");
+  background-repeat: round;
+  background-color: orange;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 70px;
+  display: grid;
+  grid-template-columns: 2;
+  grid-template-rows: 2;
+  gap: 50px;
+}
+
+
+/*header*/
+#header {
+  background-color: lightgray;
+  grid-column: 1 / 3;
+  grid-row: 1 / 2;
+}
+
+#header img {
+  width: 500px;
+  height: 200px;
+}
+
+
+/*instructions*/
+#instructions {
+  background-color: lightgray;
+  grid-column: 1 / 2;
+  grid-row: 2 / 3;
+}
+
+
+/*commands*/
+#commands {
+  background-color: lightgray;
+  grid-column: 2 / 3;
+  grid-row: 2 / 3;
+}
+
+#commands img {
+  width: 60px;
+  height: 60px;
+}
+
+
+/** GAME SCREEN */
+#game-screen {
+  background-image: url("../images/wallpaper.jpg");
+  background-repeat: round;
+  background-color: orange;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#my-canvas {
+  background-color: lightgray;
+  /*max-width: 100%;
+  max-height: 100%;*/
+}
+
+
+
+/* STATES*/
+#game-screen,
+#gameover-screen {
+  display: none; /* oculta este elemento y todo lo interno*/
+}

@@ -1,7 +1,8 @@
 // * GLOBAL VARIABLES
 const canvas = document.querySelector("#my-canvas");
 const ctx = canvas.getContext("2d");
-const startScreen = document.querySelector("#splash-screen");
+const startScreen = document.querySelector("#main-screen");
+const gameScreen = document.querySelector("#game-screen");
 const startBtn = document.querySelector("#start-btn");
 const gameOverScreen = document.querySelector("#gameover-screen");
 
@@ -10,13 +11,12 @@ let arrPressedKeys = []; // To hold the eventListener (below in this page) actio
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
-  //console.log("iniciando el juego");
 
   // Hiding initial screen when "Start" button is pressed
   startScreen.style.display = "none";
 
   // Display canvas
-  canvas.style.display = "block";
+  gameScreen.style.display = "flex";
 
   // New Game version created
   gameObj = new Game();
