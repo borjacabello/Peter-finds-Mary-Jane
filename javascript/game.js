@@ -3,8 +3,10 @@ class Game {
     this.background = new Background();
     this.player = new Player();
     this.arrEnemies = [];
+    this.spiderwebsArr = [];
     this.frames = 0;
-    this.isGameOn = true;
+    this.spacePressed = 0;
+    this.isGameOn = true; //! hay que añadirle un uso para recursión, ver ejemplo birds
   }
 
   addEnemy = () => {
@@ -20,10 +22,51 @@ class Game {
 
     // Cleaning enemies array
     this.arrEnemies.forEach((eachElement) => {
-      if (eachElement.existsOnScreen === false) {
-        this.arrEnemies.shift();
+      if (!eachElement.existsOnScreen) {
+        // If the enemy has scrolled all the way the left edge
+        this.arrEnemies.shift(); // Then remove the first enemy of the array
         //console.log(this.arrEnemies)
       }
+    });
+  };
+
+  addSpiderwebToPlayer = () => {
+    // Adding spiderwebs objects to the spiderwebs array
+    if (arrPressedKeys.includes("Space")) {
+      this.spacePressed++;
+      if (this.spacePressed === 1) {
+        // Only shoot a spiderweb one time per "Space" pressed
+        this.spiderwebsArr.push(
+          new Spiderweb(this.player.x + 30, this.player.y + 20)
+        );
+      }
+    }
+
+    // Delete spiderwebs from its array if scrolled all the way the rightcanvas edge
+    this.spiderwebsArr.forEach((eachSpiderweb) => {
+      if (!eachSpiderweb.existsOnScreen) {
+        this.spiderwebsArr.shift();
+      }
+    });
+
+    console.log(this.spiderwebsArr);
+  };
+
+  // Spiderwebs collision with enemies
+  killEnemy = () => {
+    this.arrEnemies.forEach((eachEnemy, index) => {
+      this.spiderwebsArr.forEach((eachSpiderweb, index2) => {
+        if (
+          eachSpiderweb.x < eachEnemy.x + eachEnemy.w &&
+          eachSpiderweb.x + eachSpiderweb.w > eachEnemy.x &&
+          eachSpiderweb.y < eachEnemy.y + eachEnemy.h &&
+          eachSpiderweb.h + eachSpiderweb.y > eachEnemy.y
+        ) {
+          // Collision between spiderweb (projectile) and Enemy detected!
+          this.arrEnemies.splice(index, 1);
+          this.spiderwebsArr.splice(index2, 1);
+        }
+      });
     });
   };
 
@@ -70,7 +113,12 @@ class Game {
         eachEnemy.moveGroundEnemy();
       }
     });
+    this.spiderwebsArr.forEach((eachSpiderweb) => {
+      eachSpiderweb.moveSpiderweb();
+    });
     this.addEnemy();
+    this.addSpiderwebToPlayer();
+    this.killEnemy();
     this.playerEnemyCollision();
 
     // 3. Elements Drawning
@@ -82,6 +130,9 @@ class Game {
       } else if (eachEnemy.type === "ground_enemy") {
         eachEnemy.drawGroundEnemy();
       }
+    });
+    this.spiderwebsArr.forEach((eachSpiderweb) => {
+      eachSpiderweb.drawSpiderweb();
     });
 
     // 4. Recursion control
