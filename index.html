@@ -10,7 +10,6 @@
   <body>
     <!-- MAIN SCREEN -->
     <div id="main-screen">
-
       <section id="header">
         <h1>Peter finds Mary Jane</h1>
         <p>
@@ -61,18 +60,27 @@
     </div>
 
     <!-- GAME SCREEN -->
-    <div id = "game-screen">
-      <canvas id="my-canvas" width="600" height="400"></canvas>
-      <div>
-        <h1>Score:</h1>
-        <h1>Gifts:</h1>
-      </div>
+    <div id="game-screen">
+      <canvas id="my-canvas" width="950" height="550"></canvas>
     </div>
 
     <!-- GAME OVER SCREEN -->
-    <div id="gameover-screen">
-      <img src="" width="500" alt="logo" />
-      <button id="restart-btn">Play Again!</button>
+    <div id="game-over-screen">
+      <h1>GAME OVER</h1>
+      <img src="./images/peter-parker-over.jpg" alt="peter-parker" />
+      <p>
+        Mary Jane will have to wait some other superheroe to rescue her. Or
+        maybe...
+      </p>
+      <button id="restart-btn">You can try again!</button>
+    </div>
+
+    <!-- GAME PASSED SCREEN -->
+    <div id="game-passed-screen">
+      <h1>You are a master!</h1>
+      <p>Mary Jane will thank you forever.</p>
+      <img src="./images/mary-jane-kiss.jpg" alt="mary-jane-and-spiderman" />
+      <button id="go-home-page-btn">Go to home page</button>
     </div>
 
     <script src="./javascript/background.js"></script>

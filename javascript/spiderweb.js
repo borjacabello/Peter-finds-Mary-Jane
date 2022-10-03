@@ -6,7 +6,7 @@ class Spiderweb {
     this.w = 55;
     this.x = x; // Spiderman's width
     this.y = y;
-    this.speed = 4;
+    this.speed = 5;
     this.existsOnScreen = true;
   }
 

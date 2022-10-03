@@ -8,7 +8,7 @@ class Background {
         this.h = canvas.height;
         this.x = 0;                  // background image 1 & bottom image 1
         this.x2 = canvas.width;      // background image 2 & bottom image 2
-        this.hImg2 = 50;             // bottom image roofs
+        this.hImg2 = 60;             // bottom image roofs
         this.y = 0;
         this.yImg2 = canvas.height - this.hImg2;   // bottom image roofs
         this.speed = 1;
@@ -19,7 +19,7 @@ class Background {
         if (this.x <= -this.w + this.speed) {
             this.x = this.w;
         } else {
-            this.x -= this.speed;
+            this.x -= this.speed;  // There was a small white line so I had to consider the speed gap
         }
 
         // Move the 2nd background to the left

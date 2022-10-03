@@ -4,10 +4,10 @@ class Player {
         this.img.src = "./images/spiderman.png";
         this.spriteWidth = 252; // Ancho de la imagen (frame) en el spritesheet (1200x1200) en px 252
         this.spriteHeight = 277;  // Alto de cada spiderman en el spritesheet 277
-        this.w = this.spriteWidth / 5 + 5;
-        this.h = this.spriteHeight / 5 + 10;
+        this.w = this.spriteWidth / 5 + 15;  // 70,4
+        this.h = this.spriteHeight / 5 + 20;   // 80,4
         this.x = 60;
-        this.bottomMargin = 50; // Margin from the canvas bottom to elevate the player
+        this.bottomMargin = 60; // Margin from the canvas bottom to elevate the player
         this.y = canvas.height - this.h - this.bottomMargin;
         this.vy = 0;
         this.gravity = 1;
@@ -23,10 +23,10 @@ class Player {
 
     movePlayer = () => {
         // Horizontal movement for every frame
-        this.x += this.speed;
+        this.x += this.speed;  // Initially 0, doesn't move
 
         if (arrPressedKeys.includes("KeyD")) {
-            this.speed = this.maxSpeed;
+            this.speed = this.maxSpeed;  // Only have to change the this.speed value
         } else if (arrPressedKeys.includes("KeyA")) {
             this.speed = -this.maxSpeed;
         } else {
@@ -41,7 +41,7 @@ class Player {
         }
 
         // Vertical movement for every frame
-        this.y += this.vy;
+        this.y += this.vy;  // 0 at the beginning, doesn't move without pressing a key
         if (arrPressedKeys.includes("KeyW") && this.playerOnGround()) {
             this.vy -= 23;
         } else if (!this.playerOnGround()) {

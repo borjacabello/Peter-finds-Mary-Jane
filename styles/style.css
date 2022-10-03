@@ -20,9 +20,9 @@ body {
 }
 
 #main-screen {
-  background-image: url("../images/wallpaper.jpg");
-  background-repeat: round;
-  background-color: orange;
+  /*background-image: url("../images/wallpaper.jpg");
+  background-repeat: round;*/
+  background-color: linen;
   width: 100vw;
   height: 100vh;
   margin: 0;
@@ -70,10 +70,9 @@ body {
 
 /** GAME SCREEN */
 #game-screen {
-  background-image: url("../images/wallpaper.jpg");
-  background-repeat: round;
-  background-color: orange;
+  background-color: linen;
   margin: 0;
+  padding: 0;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -90,8 +89,40 @@ body {
 
 
 
-/* STATES*/
+/**GAME OVER SCREEN*/
+#game-over-screen {
+  background-color: linen;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+#game-over-screen img {
+  width: 400px;
+  height: 200px;
+}
+
+
+/**GAME PASSED SCREEN*/
+#game-passed-screen {
+  background-color: linen;
+  margin: 0;
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+
+/** STATES*/
 #game-screen,
-#gameover-screen {
+#game-over-screen,
+#game-passed-screen {
   display: none; /* oculta este elemento y todo lo interno*/
 }
