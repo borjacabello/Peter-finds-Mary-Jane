@@ -60,7 +60,7 @@ window.addEventListener("keyup", (event) => {
 
   // Set the Game Object property spacePressed to 0 after being incremented in addSpiderwebToPlayer
   if (event.code === "Space") {
-    if (gameObj !== undefined) {
+    if (gameObj !== undefined) {  // to prevent bug of pressing "Space" on main screen
       gameObj.spacePressed = 0;
     }
     arrPressedKeys.splice(arrPressedKeys.indexOf(event.code), 1);

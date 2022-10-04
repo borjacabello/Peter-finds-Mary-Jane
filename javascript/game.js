@@ -9,23 +9,25 @@ class Game {
     this.timerMaryJane = 0; // To handle Mary Jane's time visible on screen
     this.score = 0;
     this.isGameOn = true;
+    this.time = 0;
+    this.lastTime = new Date()
   }
 
   addEnemy = () => {
     // 20 seconds = 1200 frames
     let randomFramesMaryJaneAppearance = Math.floor(Math.random() * 1200); // Between 0 and 20 seconds
 
-    if (this.frames % 60 === 0) {
+    if (this.frames % 53 === 0) {
       let groundEnemy = new GroundEnemy();
       this.arrEnemies.push(groundEnemy);
-    } else if (this.frames % 30 === 0) {
+    } else if (this.frames % 63 === 0) {
       let airEnemy = new AirEnemy();
       this.arrEnemies.push(airEnemy);
-      console.log(this.arrEnemies)
-    } else if (this.frames % 100 === 0) { //! Dont repeat %60 or %30
+      //console.log(this.arrEnemies)
+    } else if (this.frames % 43 === 0) { //! Dont repeat %60 or %30
       let topEnemy = new TopEnemy();
       this.arrEnemies.push(topEnemy);
-      console.log(this.arrEnemies)
+      //console.log(this.arrEnemies)
     } else if (
       this.timerMaryJane % (600 + randomFramesMaryJaneAppearance) ===
       0
@@ -148,7 +150,15 @@ class Game {
   };
 
   gameLoop = () => {
-    // Increments for each animation frame (60 times per second)
+    /*if (this.frames % 60 === 0) {
+      console.log("seconds in game", this.time)
+      let newDate = new Date()
+      let realTimePassed = newDate - this.lastTime
+      console.log(realTimePassed / 1000)
+      this.time++
+    }*/
+
+
     this.frames++;
     this.timerMaryJane++;
 
@@ -160,15 +170,7 @@ class Game {
     this.player.movePlayer();
 
     this.arrEnemies.forEach((eachEnemy) => {
-      if (eachEnemy.type === "air_enemy") {
-        eachEnemy.moveAirEnemy();
-      } else if (eachEnemy.type === "ground_enemy") {
-        eachEnemy.moveGroundEnemy();
-      } else if (eachEnemy.type === "top_enemy") {
-        eachEnemy.moveTopEnemy();
-      } else if (eachEnemy.type === "mary_jane") {
-        eachEnemy.moveMaryJane();
-      }
+      eachEnemy.moveEnemy();
     });
 
     this.spiderwebsArr.forEach((eachSpiderweb) => {
@@ -185,15 +187,7 @@ class Game {
     this.player.drawPlayer();
 
     this.arrEnemies.forEach((eachEnemy) => {
-      if (eachEnemy.type === "air_enemy") {
-        eachEnemy.drawAirEnemy();
-      } else if (eachEnemy.type === "ground_enemy") {
-        eachEnemy.drawGroundEnemy();
-      } else if (eachEnemy.type === "top_enemy") {
-        eachEnemy.drawTopEnemy();
-      } else if (eachEnemy.type === "mary_jane") {
-        eachEnemy.drawMaryJane();
-      }
+      eachEnemy.drawEnemy();
     });
 
     this.spiderwebsArr.forEach((eachSpiderweb) => {
