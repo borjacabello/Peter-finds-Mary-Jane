@@ -1,11 +1,12 @@
 class Game {
   constructor(playerSelected, backgroundSelected) {
-    this.backgroundSelection = backgroundSelected;
+    this.backgroundSelection = backgroundSelected; // Background button day or night pressed
     this.background = new Background(this.backgroundSelection);
     this.playerSelection = playerSelected; // Button red or black spiderman pressed
     this.player = new Player(this.playerSelection);
     this.arrEnemies = [];
     this.spiderwebsArr = [];
+    this.enemyAttacksArr = [];
     this.frames = 0;
     this.spacePressed = 0;
     this.timerMaryJane = 0;
@@ -79,6 +80,30 @@ class Game {
         this.spiderwebsArr.shift();
       }
     });
+  };
+
+
+  // Adding attacks to random enemies
+  addAttackToEnemy = () => {
+    let randomizeEnemyAttack = Math.random() * 1;
+
+    this.arrEnemies.forEach((eachEnemy) => {
+      if (this.frames % 60 === 0 && randomizeEnemyAttack < 0.4) {
+      if (eachEnemy.type === "ground_enemy" ||
+          eachEnemy.type === "air_enemy") {
+        this.enemyAttacksArr.push(
+          new EnemyAttack(eachEnemy.x, eachEnemy.y, eachEnemy.type)
+        );
+      }
+    }
+    });
+
+    // Clean enemy attacks array
+    this.enemyAttacksArr.forEach((eachAttack, index) => {
+      if (!eachAttack.existsOnScreen) {
+        this.enemyAttacksArr.splice(index, 1);
+      }
+    })
   };
 
   // Spiderwebs collision with enemies
@@ -226,8 +251,13 @@ class Game {
       eachSpiderweb.moveSpiderweb();
     });
 
+    this.enemyAttacksArr.forEach((eachAttack) => {
+      eachAttack.moveEnemyAttack();
+    })
+
     this.addEnemy();
     this.addSpiderwebToPlayer();
+    this.addAttackToEnemy();
     this.killEnemy();
     this.playerEnemyCollision();
     this.incrementTimer();
@@ -243,6 +273,10 @@ class Game {
     this.spiderwebsArr.forEach((eachSpiderweb) => {
       eachSpiderweb.drawSpiderweb();
     });
+
+    this.enemyAttacksArr.forEach((eachAttack) => {
+      eachAttack.drawEnemyAttack();
+    })
 
     this.drawScore();
 
