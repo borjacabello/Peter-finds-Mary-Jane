@@ -1,16 +1,16 @@
 class Game {
-  constructor() {
+  constructor(playerSelected) {
     this.background = new Background();
-    this.player = new Player();
+    this.playerSelection = playerSelected; // Button red or black spiderman pressed
+    this.player = new Player(this.playerSelection);
     this.arrEnemies = [];
     this.spiderwebsArr = [];
     this.frames = 0;
     this.spacePressed = 0;
-    this.timerMaryJane = 0; // To handle Mary Jane's time visible on screen
+    this.timerMaryJane = 0;
     this.score = 0;
     this.isGameOn = true;
     this.timer = this.frames / 60;
-    //this.lastTime = new Date()
   }
 
   addEnemy = () => {
@@ -25,7 +25,6 @@ class Game {
       this.arrEnemies.push(airEnemy);
       //console.log(this.arrEnemies)
     } else if (this.frames % 95 === 0) {
-      //! Dont repeat %60 or %30
       let topEnemy = new TopEnemy();
       this.arrEnemies.push(topEnemy);
       //console.log(this.arrEnemies)
@@ -137,7 +136,7 @@ class Game {
 
   // Add last attempts to the table located below canvas
   addRankingPositions = () => {
-    console.log(rankingValues)
+    console.log(rankingValues);
     let html = "";
     let finalTimer = this.timer;
     let finalScore = this.score;
@@ -145,7 +144,7 @@ class Game {
     let rankingObject = {
       name: playerName.value,
       time: finalTimer,
-      score: finalScore
+      score: finalScore,
     };
 
     if (rankingValues.length > 2) {

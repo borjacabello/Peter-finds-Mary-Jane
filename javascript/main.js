@@ -13,6 +13,8 @@ const gamePassedScreen = document.querySelector("#game-passed-screen");
 const startBtn = document.querySelector("#start-btn");
 const replayBtn = document.querySelector("#restart-btn");
 const homeBtn = document.querySelector("#go-home-page-btn");
+const redSpidermanBtn = document.querySelector("#red-spiderman");
+const blackSpidermanBtn = document.querySelector("#black-spiderman");
 
 // HTML DOM elements
 const bodyTableDom = document.querySelector("#table-body")
@@ -23,20 +25,21 @@ const playerName = document.querySelector("#name")
 let gameObj;
 let rankingValues = []; // To keep record of last attempts after each gameLoop
 let arrPressedKeys = []; // To hold the eventListener (below in this page) actions
+let playerSelected;  // To change the true/false value which is passed to gameObj to choose main player
 
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
   startScreen.style.display = "none";
   gameScreen.style.display = "flex";
-  gameObj = new Game();
+  gameObj = new Game(playerSelected);
   gameObj.gameLoop();
 };
 
 const replayGame = () => {
   gameOverScreen.style.display = "none";
   gameScreen.style.display = "flex";
-  gameObj = new Game();
+  gameObj = new Game(playerSelected);
   gameObj.gameLoop();
 };
 
@@ -45,10 +48,22 @@ const returnToHomePage = () => {
   startScreen.style.display = "grid";
 };
 
+// To change selected player inside gameObj, its value is passed to gameObj constructor
+const changeRedPlayer = () => {
+  playerSelected = false;
+}
+
+const changeBlackPlayer = () => {
+  playerSelected = true;
+}
+
 // * ADD EVENT LISTENERS
 replayBtn.addEventListener("click", replayGame);
 startBtn.addEventListener("click", startGame);
 homeBtn.addEventListener("click", returnToHomePage);
+redSpidermanBtn.addEventListener("click", changeRedPlayer);  // Red Spiderman
+blackSpidermanBtn.addEventListener("click", changeBlackPlayer)  // Black Spiderman
+
 
 // Gets the current pressed key and checks if it has been previously added to the array
 window.addEventListener("keydown", (event) => {

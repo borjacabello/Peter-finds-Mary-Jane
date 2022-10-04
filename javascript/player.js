@@ -1,11 +1,13 @@
 class Player {
-    constructor() {
+    constructor(selection) {
         this.img = new Image();
-        this.img.src = "./images/spiderman.png";
-        this.spriteWidth = 252; // Ancho de la imagen (frame) en el spritesheet (1200x1200) en px 252
-        this.spriteHeight = 277;  // Alto de cada spiderman en el spritesheet 277
-        this.w = this.spriteWidth / 5 + 15;  // 70,4
-        this.h = this.spriteHeight / 5 + 20;   // 80,4
+        if (selection) { // Button "Red Spiderman" pressed
+            this.img.src = "./images/black-spiderman.png";
+        } else {
+            this.img.src = "./images/red-spiderman.png"
+        }
+        this.w = 70
+        this.h = 80
         this.x = 60;
         this.bottomMargin = 60; // Margin from the canvas bottom to elevate the player
         this.y = canvas.height - this.h - this.bottomMargin;
@@ -55,8 +57,7 @@ class Player {
     }
 
     drawPlayer = () => {
-        ctx.drawImage(this.img, 48, 60, this.spriteWidth, this.spriteHeight, this.x, this.y,
-        this.w, this.h);
+        ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
 
 }
