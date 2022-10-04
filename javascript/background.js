@@ -1,7 +1,11 @@
 class Background {
-    constructor() {
+    constructor(selection) {
         this.img = new Image();
-        this.img.src = "./images/test.png";     // background images
+        if (selection) {
+            this.img.src = "./images/background-day.jpg";     // background images
+        } else {
+            this.img.src = "./images/background-night.jpg";
+        }
         this.img2 = new Image();      
         this.img2.src = "./images/roof.png"     // bottom image roofs
         this.w = canvas.width;

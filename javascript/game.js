@@ -1,6 +1,7 @@
 class Game {
-  constructor(playerSelected) {
-    this.background = new Background();
+  constructor(playerSelected, backgroundSelected) {
+    this.backgroundSelection = backgroundSelected;
+    this.background = new Background(this.backgroundSelection);
     this.playerSelection = playerSelected; // Button red or black spiderman pressed
     this.player = new Player(this.playerSelection);
     this.arrEnemies = [];
