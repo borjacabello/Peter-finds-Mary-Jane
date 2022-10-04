@@ -73,8 +73,8 @@ class TopEnemy {
     } else {
       this.img.src = "./images/venom.png";
     }
-    this.w = 75;
-    this.h = 75;
+    this.w = 65;
+    this.h = 65;
     this.x = 60 + Math.random() * canvas.width * 0.8;
     this.y = 0;
     this.vx = 0;

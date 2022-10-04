@@ -1,16 +1,29 @@
 // * GLOBAL VARIABLES
+// Canvas
 const canvas = document.querySelector("#my-canvas");
 const ctx = canvas.getContext("2d");
+
+// Screen
 const startScreen = document.querySelector("#main-screen");
 const gameScreen = document.querySelector("#game-screen");
 const gameOverScreen = document.querySelector("#game-over-screen");
 const gamePassedScreen = document.querySelector("#game-passed-screen");
+
+// Buttons
 const startBtn = document.querySelector("#start-btn");
 const replayBtn = document.querySelector("#restart-btn");
 const homeBtn = document.querySelector("#go-home-page-btn");
 
+// HTML DOM elements
+const bodyTableDom = document.querySelector("#table-body")
+const newTableRow = document.createElement("tr");
+const playerName = document.querySelector("#name")
+
+// Global variables
 let gameObj;
+let rankingValues = []; // To keep record of last attempts after each gameLoop
 let arrPressedKeys = []; // To hold the eventListener (below in this page) actions
+
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
@@ -25,7 +38,6 @@ const replayGame = () => {
   gameScreen.style.display = "flex";
   gameObj = new Game();
   gameObj.gameLoop();
-  //console.log(arrPressedKeys);
 };
 
 const returnToHomePage = () => {

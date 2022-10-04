@@ -9,22 +9,23 @@ class Game {
     this.timerMaryJane = 0; // To handle Mary Jane's time visible on screen
     this.score = 0;
     this.isGameOn = true;
-    this.time = 0;
-    this.lastTime = new Date()
+    this.timer = this.frames / 60;
+    //this.lastTime = new Date()
   }
 
   addEnemy = () => {
     // 20 seconds = 1200 frames
     let randomFramesMaryJaneAppearance = Math.floor(Math.random() * 1200); // Between 0 and 20 seconds
 
-    if (this.frames % 53 === 0) {
+    if (this.frames % 103 === 0) {
       let groundEnemy = new GroundEnemy();
       this.arrEnemies.push(groundEnemy);
-    } else if (this.frames % 63 === 0) {
+    } else if (this.frames % 87 === 0) {
       let airEnemy = new AirEnemy();
       this.arrEnemies.push(airEnemy);
       //console.log(this.arrEnemies)
-    } else if (this.frames % 43 === 0) { //! Dont repeat %60 or %30
+    } else if (this.frames % 95 === 0) {
+      //! Dont repeat %60 or %30
       let topEnemy = new TopEnemy();
       this.arrEnemies.push(topEnemy);
       //console.log(this.arrEnemies)
@@ -128,16 +129,64 @@ class Game {
     });
   };
 
+  incrementTimer = () => {
+    if (this.frames % 60 === 0) {
+      this.timer++;
+    }
+  };
+
+  // Add last attempts to the table located below canvas
+  addRankingPositions = () => {
+    console.log(rankingValues)
+    let html = "";
+    let finalTimer = this.timer;
+    let finalScore = this.score;
+
+    let rankingObject = {
+      name: playerName.value,
+      time: finalTimer,
+      score: finalScore
+    };
+
+    if (rankingValues.length > 2) {
+      rankingValues.pop();
+    }
+
+    rankingValues.unshift(rankingObject);
+
+    rankingValues.forEach((eachObject) => {
+      html += `
+        <tr>
+          <td>
+            <span>${eachObject.name}</span>
+          </td> 
+          <td>
+            <span>${eachObject.time}</span>
+          </td>
+          <td>
+            <span>${eachObject.score}</span>
+          </td>
+        </tr>
+      `;
+    });
+
+    bodyTableDom.innerHTML = html;
+  };
+
   drawScore = () => {
-    ctx.font = "30px Arial";
-    // (elTexto, posX, posY)
+    ctx.font = "200 25px Arial";
+    let timerStr = `Timer: ${this.timer}`;
+    ctx.fillText(timerStr, 10, 40);
+
+    ctx.font = "200 25px Arial";
     let scoreStr = `Score: ${this.score}`;
-    ctx.fillText(scoreStr, canvas.width * 0.4, 50);
+    ctx.fillText(scoreStr, 10, 80);
   };
 
   // Game ends with a collision and gameover screen is displayed
   gameOver = () => {
     this.isGameOn = false;
+    this.addRankingPositions();
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
   };
@@ -145,6 +194,7 @@ class Game {
   // Game ends finding Mary Jane and passed-screen is displayed
   gamePassed = () => {
     this.isGameOn = false;
+    this.addRankingPositions();
     gameScreen.style.display = "none";
     gamePassedScreen.style.display = "flex";
   };
@@ -157,7 +207,6 @@ class Game {
       console.log(realTimePassed / 1000)
       this.time++
     }*/
-
 
     this.frames++;
     this.timerMaryJane++;
@@ -181,6 +230,7 @@ class Game {
     this.addSpiderwebToPlayer();
     this.killEnemy();
     this.playerEnemyCollision();
+    this.incrementTimer();
 
     //* 3. Elements Drawning
     this.background.drawBackground();

@@ -17,6 +17,7 @@
           rescue her?
         </p>
         <img src="./images/spiderman-main-screen.png" alt="spiderman-image" />
+        <input type="text" id="name" placeholder="Introduce your name" />
         <button id="start-btn">PLAY GAME</button>
       </section>
 
@@ -57,11 +58,50 @@
           <p>Shoot</p>
         </div>
       </section>
+
+      <section id="settings">
+        <h2>Settings</h2>
+        <div id = "selectors">
+          <div>
+            <h3>Player Selection</h3>
+            <div>
+              <button id = "red-spiderman">Red Spiderman</button>
+              <button id = "black-spiderman">Black Spiderman</button>
+            </div>
+          </div>
+          <div>
+            <h3>Background Selection</h3>
+            <div>
+              <button>City Night</button>
+              <button>Sunrise</button>
+            </div>
+          </div>
+          <div>
+            <h3>Level</h3>
+            <div>
+              <button>Easy</button>
+              <button>Hard</button>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
 
     <!-- GAME SCREEN -->
     <div id="game-screen">
       <canvas id="my-canvas" width="950" height="550"></canvas>
+      <h1>Last Attempts</h1>
+      <table>
+        <thead>
+          <tr>
+            <th>Player Name</th>
+            <th>Time</th>
+            <th>Score</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+        </tbody>
+      </table>
     </div>
 
     <!-- GAME OVER SCREEN -->
