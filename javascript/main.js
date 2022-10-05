@@ -12,6 +12,7 @@ const gamePassedScreen = document.querySelector("#game-passed-screen");
 // Buttons
 const startBtn = document.querySelector("#start-btn");
 const replayBtn = document.querySelector("#restart-btn");
+const gameoverHomeBtn = document.querySelector("#gameover-home-btn")
 const homeBtn = document.querySelector("#go-home-page-btn");
 const redSpidermanBtn = document.querySelector("#red-spiderman");
 const blackSpidermanBtn = document.querySelector("#black-spiderman");
@@ -25,6 +26,17 @@ const hardLevelBtn = document.querySelector("#hard-btn")
 const bodyTableDom = document.querySelector("#table-body")
 const newTableRow = document.createElement("tr");
 const playerName = document.querySelector("#name")
+
+// Audios
+/*let audio1 = new Audio();
+audio1.src = "./audios/background-song.mp3";
+audio1.autoplay = true;
+audio1.muted = true;
+audio1.volume = 0.5;*/
+
+let audioButton = new Audio();
+audioButton.src = "./audios/button.wav"
+audioButton.volume = 0.4;
 
 // Global variables
 let gameObj;
@@ -63,6 +75,7 @@ const startGame = () => {
   gameScreen.style.display = "flex";
   gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
+  gameObj.audio.play();
 };
 
 const replayGame = () => {
@@ -70,12 +83,18 @@ const replayGame = () => {
   gameScreen.style.display = "flex";
   gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
+  gameObj.audio.play();
 };
 
 const returnToHomePage = () => {
   gamePassedScreen.style.display = "none";
   startScreen.style.display = "grid";
 };
+
+const gameoverHomePage = () => {
+  gameOverScreen.style.display = "none";
+  startScreen.style.display = "grid";
+}
 
 // To change selected player inside gameObj, its value is passed to gameObj constructor
 const changeRedPlayer = () => {
@@ -109,21 +128,15 @@ const changeHardLevel = () => {
 }
 
 // * ADD EVENT LISTENERS
-//! FPS
-/*window.addEventListener("load", () => {
-  detectFPS()
-  framesRecursion()
-})*/
-//! ---------------------------
-
 replayBtn.addEventListener("click", replayGame);
 startBtn.addEventListener("click", startGame);
+gameoverHomeBtn.addEventListener("click", gameoverHomePage);
 homeBtn.addEventListener("click", returnToHomePage);
 redSpidermanBtn.addEventListener("click", changeRedPlayer);  // Red Spiderman gameObj
 blackSpidermanBtn.addEventListener("click", changeBlackPlayer)  // Black Spiderman gameObj
 nightBackgroundBtn.addEventListener("click", changeNightBackground)  // Night Background gameObj
 dayBackgroundBtn.addEventListener("click", changeDayBackground)  // Day Background gameObj
-easyLevelBtn.addEventListener("click", changeEasyLevel) // Easy level gameObj
+easyLevelBtn.addEventListener("click", changeEasyLevel)  // Easy level gameObj
 mediumLevelBtn.addEventListener("click", changeMediumLevel) // Mediumm level gameObj
 hardLevelBtn.addEventListener("click", changeHardLevel) // Hard level gameObj
 

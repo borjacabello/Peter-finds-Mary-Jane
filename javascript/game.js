@@ -16,6 +16,21 @@ class Game {
     this.score = 0;
     this.isGameOn = true;
     this.timer = this.frames / 60;
+    this.audio = new Audio();
+    if (this.levelSelection === 1 || this.levelSelection === undefined) {
+      this.audio.src = "./audios/level1.wav";
+    } else if (this.levelSelection === 2) {
+      this.audio.src = "./audios/level2.mp3";
+    } else {
+      this.audio.src = "./audios/level3.wav"
+    }
+    this.audio.volume = 0.4;
+    this.hitAudio = new Audio();
+    this.hitAudio.src = "./audios/hit.wav";
+    this.hitAudio.volume = 0.4;
+    this.hitAudio2 = new Audio();
+    this.hitAudio2.src = "./audios/hit2.wav";
+    this.hitAudio2.volume = 0.4;
   }
 
   addEnemy = () => {
@@ -211,6 +226,7 @@ class Game {
             this.spiderwebsArr.splice(index2, 1);
             this.enemyCollisionImagesArr.push(new EnemyCollision(eachEnemy.x, eachEnemy.y));
             this.score += 10; // Score increases for each killed enemy
+            this.hitAudio.play();
           }
         }
       });
@@ -270,6 +286,7 @@ class Game {
           this.spiderwebsArr.splice(index, 1);
           this.enemyAttacksArr.splice(index2, 1);
           this.collisionImagesArr.push(new AttackCollision(eachAttack.x, eachAttack.y));
+          this.hitAudio2.play();
         }
       });
     });
@@ -340,6 +357,7 @@ class Game {
     this.addRankingPositions();
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
+    this.audio.pause();
   };
 
   // Game ends finding Mary Jane and passed-screen is displayed
@@ -348,6 +366,7 @@ class Game {
     this.addRankingPositions();
     gameScreen.style.display = "none";
     gamePassedScreen.style.display = "flex";
+    this.audio.pause();
   };
 
   gameLoop = () => {
