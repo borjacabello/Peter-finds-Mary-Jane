@@ -1,5 +1,7 @@
+// Air Enemy character
 class AirEnemy {
-  constructor() {
+  constructor(selectedLevel) {
+    this.levelSelection = selectedLevel;
     let randomizeAirEnemy = Math.random() * 1;
     this.img = new Image();
     if (randomizeAirEnemy < 0.5) {
@@ -10,8 +12,15 @@ class AirEnemy {
     this.w = 55;
     this.h = 65;
     this.x = canvas.width;
-    this.y = 100 + Math.random() * canvas.height * 0.4; // Random y positions of the air enemies
-    this.vx = Math.random() * 2 + 2; // Random x speed for each one of them
+    this.y = 100 + Math.random() * canvas.height * 0.4;
+    // Random vx depending on the level selection
+    if (this.levelSelection === 1 || this.levelSelection === undefined) {
+      this.vx = 2;
+    } else if (this.levelSelection === 2) {
+      this.vx = Math.random() * 2 + 2;
+    } else if (this.levelSelection === 3) {
+      this.vx = Math.random() * 2 + 2;
+    }
     this.vy = 0;
     this.curve = Math.random() * 0.3;
     this.type = "air_enemy";
@@ -33,8 +42,10 @@ class AirEnemy {
   };
 }
 
+// Ground Enemy character
 class GroundEnemy {
-  constructor() {
+  constructor(selectedLevel) {
+    this.levelSelection = selectedLevel;
     let randomizeGroundEnemy = Math.random() * 1;
     this.img = new Image();
     if (randomizeGroundEnemy < 0.5) {
@@ -45,8 +56,14 @@ class GroundEnemy {
     this.w = 65;
     this.h = 75;
     this.x = canvas.width;
-    this.y = canvas.height - this.h - 60; // 50 is bottomMargin
-    this.vx = Math.random() * 2 + 1;
+    this.y = canvas.height - this.h - 60; // 60 is bottomMargin
+    if (this.levelSelection === 1  || this.levelSelection === undefined) {
+      this.vx = 2;
+    } else if (this.levelSelection === 2) {
+      this.vx = Math.random() * 2 + 2;
+    } else if (this.levelSelection === 3) {
+      this.vx = Math.random() * 2 + 2;
+    }
     this.type = "ground_enemy";
     this.existsOnScreen = true;
   }
@@ -63,11 +80,12 @@ class GroundEnemy {
   };
 }
 
+// Top Enemy character
 class TopEnemy {
-  constructor() {
+  constructor(selectedLevel) {
+    this.levelSelection = selectedLevel;
     let randomizeTopEnemy = Math.random() * 1;
     this.img = new Image();
-    //let venomType = "./images/venom.png";
     if (randomizeTopEnemy < 0.5) {
       this.img.src = "./images/octopus.png";
     } else {
@@ -78,7 +96,14 @@ class TopEnemy {
     this.x = 60 + Math.random() * canvas.width * 0.8;
     this.y = 0;
     this.vx = 0;
-    this.vy = 1 + Math.random() * 2;
+    // Random vy depending on level selection
+    if (this.levelSelection === 1  || this.levelSelection === undefined) {
+      this.vy = 1;
+    } else if (this.levelSelection === 2) {
+      this.vy = 1 + Math.random() * 2;
+    } else if (this.levelSelection === 3) {
+      this.vy = 1 + Math.random() * 2;
+    }
     this.directionY = 1;
     this.type = "top_enemy";
     this.existsOnScreen = true; // enemy hasn't gone all the way through the canvas left edge
@@ -101,6 +126,8 @@ class TopEnemy {
   };
 }
 
+
+// Mary Jane character
 class MaryJane {
   constructor() {
     this.img = new Image();

@@ -1,9 +1,10 @@
 class Game {
-  constructor(playerSelected, backgroundSelected) {
+  constructor(playerSelected, backgroundSelected, levelSelected) {
     this.backgroundSelection = backgroundSelected; // Background button day or night pressed
     this.background = new Background(this.backgroundSelection);
     this.playerSelection = playerSelected; // Button red or black spiderman pressed
     this.player = new Player(this.playerSelection);
+    this.levelSelection = levelSelected; // Button level easy medium hard pressed
     this.arrEnemies = [];
     this.spiderwebsArr = [];
     this.enemyAttacksArr = [];
@@ -19,21 +20,52 @@ class Game {
     // 20 seconds = 1200 frames
     let randomFramesMaryJaneAppearance = Math.floor(Math.random() * 1200); // Between 0 and 20 seconds
 
-    if (this.frames % 103 === 0) {
-      let groundEnemy = new GroundEnemy();
-      this.arrEnemies.push(groundEnemy);
-    } else if (this.frames % 87 === 0) {
-      let airEnemy = new AirEnemy();
-      this.arrEnemies.push(airEnemy);
-      //console.log(this.arrEnemies)
-    } else if (this.frames % 95 === 0) {
-      let topEnemy = new TopEnemy();
-      this.arrEnemies.push(topEnemy);
-      //console.log(this.arrEnemies)
-    } else if (
-      this.timerMaryJane % (600 + randomFramesMaryJaneAppearance) ===
-      0
-    ) {
+    if (this.levelSelection === 1 || this.levelSelection === undefined) {
+      if (this.frames % 180 === 0) {
+        let groundEnemy = new GroundEnemy(this.levelSelection);
+        this.arrEnemies.push(groundEnemy);
+      }
+      if (this.frames % 150 === 0) {
+        let airEnemy = new AirEnemy(this.levelSelection);
+        this.arrEnemies.push(airEnemy);
+      }
+      if (this.frames % 140 === 0) {
+        let topEnemy = new TopEnemy(this.levelSelection);
+        this.arrEnemies.push(topEnemy);
+      }
+    }
+
+    if (this.levelSelection === 2) {
+      if (this.frames % 120 === 0) {
+        let groundEnemy = new GroundEnemy(this.levelSelection);
+        this.arrEnemies.push(groundEnemy);
+      }
+      if (this.frames % 90 === 0) {
+        let airEnemy = new AirEnemy(this.levelSelection);
+        this.arrEnemies.push(airEnemy);
+      }
+      if (this.frames % 80 === 0) {
+        let topEnemy = new TopEnemy(this.levelSelection);
+        this.arrEnemies.push(topEnemy);
+      }
+    }
+
+    if (this.levelSelection === 3) {
+      if (this.frames % 30 === 0) {
+        let groundEnemy = new GroundEnemy(this.levelSelection);
+        this.arrEnemies.push(groundEnemy);
+      }
+      if (this.frames % 40 === 0) {
+        let airEnemy = new AirEnemy(this.levelSelection);
+        this.arrEnemies.push(airEnemy);
+      }
+      if (this.frames % 40 === 0) {
+        let topEnemy = new TopEnemy(this.levelSelection);
+        this.arrEnemies.push(topEnemy);
+      }
+    }
+
+    if (this.timerMaryJane % (600 + randomFramesMaryJaneAppearance) === 0) {
       // Mary Jane appears at intervals between 20 and 30 seconds
       this.timerMaryJane = 0; // Timer set to 0 when mary jane appears
       let maryjaneEnemy = new MaryJane();
@@ -55,7 +87,7 @@ class Game {
         // Delete Mary jane if spiderman doesn't collision with she
         if (this.timerMaryJane % 420 === 0 && this.timerMaryJane !== 0) {
           // Mary jane visible 7 seconds
-          // ! this.timerMaryJane = 0; only to use if want to reset mary jane timer after watching her on screen
+          // ! this.timerMaryJane = 0;
           this.arrEnemies.splice(index, 1);
         }
       }
@@ -82,20 +114,53 @@ class Game {
     });
   };
 
-
   // Adding attacks to random enemies
   addAttackToEnemy = () => {
     let randomizeEnemyAttack = Math.random() * 1;
 
     this.arrEnemies.forEach((eachEnemy) => {
-      if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.4) {
-      if (eachEnemy.type === "ground_enemy" ||
-          eachEnemy.type === "air_enemy") {
-        this.enemyAttacksArr.push(
-          new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
-        );
+      if (this.levelSelection === 1 || this.levelSelection === undefined) {
+        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.4 && eachEnemy.type === "ground_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+  
+        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.4 && eachEnemy.type === "air_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
       }
-    }
+
+      if (this.levelSelection === 2) {
+        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.5 && eachEnemy.type === "ground_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+  
+        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.5 && eachEnemy.type === "air_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+      }
+
+      if (this.levelSelection === 3) {
+        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.8 && eachEnemy.type === "ground_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+  
+        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.8 && eachEnemy.type === "air_enemy") {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+      }
+
     });
 
     // Clean enemy attacks array
@@ -103,7 +168,7 @@ class Game {
       if (!eachAttack.existsOnScreen) {
         this.enemyAttacksArr.splice(index, 1);
       }
-    })
+    });
   };
 
   // Spiderwebs collision with enemies
@@ -156,7 +221,7 @@ class Game {
 
   // Player collision with enemy attacks
   playerAttackCollision = () => {
-    this.enemyAttacksArr.forEach( eachAttack => {
+    this.enemyAttacksArr.forEach((eachAttack) => {
       if (
         this.player.x < eachAttack.x + eachAttack.w &&
         this.player.x + this.player.w > eachAttack.x &&
@@ -165,13 +230,13 @@ class Game {
       ) {
         this.gameOver();
       }
-    })
-  }
+    });
+  };
 
   // Spiderman's spiderwebs collision with enemy attacks
   spiderwebAttackCollision = () => {
-    this.spiderwebsArr.forEach( (eachSpiderweb, index) => {
-      this.enemyAttacksArr.forEach( (eachAttack, index2) => {
+    this.spiderwebsArr.forEach((eachSpiderweb, index) => {
+      this.enemyAttacksArr.forEach((eachAttack, index2) => {
         if (
           eachSpiderweb.x < eachAttack.x + eachAttack.w &&
           eachSpiderweb.x + eachSpiderweb.w > eachAttack.x &&
@@ -181,9 +246,9 @@ class Game {
           this.spiderwebsArr.splice(index, 1);
           this.enemyAttacksArr.splice(index2, 1);
         }
-      })
-    })
-  }
+      });
+    });
+  };
 
   // Increment general timer / 60 frames
   incrementTimer = () => {
@@ -191,7 +256,6 @@ class Game {
       this.timer++;
     }
   };
-
 
   // Add last attempts to the table located below canvas
   addRankingPositions = () => {
@@ -287,7 +351,7 @@ class Game {
 
     this.enemyAttacksArr.forEach((eachAttack) => {
       eachAttack.moveEnemyAttack();
-    })
+    });
 
     this.addEnemy();
     this.addSpiderwebToPlayer();
@@ -312,7 +376,7 @@ class Game {
 
     this.enemyAttacksArr.forEach((eachAttack) => {
       eachAttack.drawEnemyAttack();
-    })
+    });
 
     this.drawScore();
 

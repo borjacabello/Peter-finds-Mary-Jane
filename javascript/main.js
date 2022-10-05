@@ -17,6 +17,9 @@ const redSpidermanBtn = document.querySelector("#red-spiderman");
 const blackSpidermanBtn = document.querySelector("#black-spiderman");
 const nightBackgroundBtn = document.querySelector("#city-night");
 const dayBackgroundBtn = document.querySelector("#sunrise");
+const easyLevelBtn = document.querySelector("#easy-btn")
+const mediumLevelBtn = document.querySelector("#medium-btn")
+const hardLevelBtn = document.querySelector("#hard-btn")
 
 // HTML DOM elements
 const bodyTableDom = document.querySelector("#table-body")
@@ -29,19 +32,43 @@ let rankingValues = []; // To keep record of last attempts after each gameLoop
 let arrPressedKeys = []; // To hold the eventListener (below in this page) actions
 let playerSelected;  // To change the true/false value which is passed to gameObj to choose main player
 let backgroundSelected; // To change background image depending on pressed button
+let levelSelected;
+
+
+//! FPS Management
+/*let fps = 0; // will hold the detected FPS 1 second after starting the page. Can be used from within the game.
+let testGoing = true
+
+const detectFPS = () => {
+  setTimeout(() => {
+    testGoing = false; // to stop recursion frame counter after 1 second.
+    console.log("detected FPS", fps)
+    // * if starting game with button, unlock button here
+  }, 1000)
+}
+
+const framesRecursion = () => {
+  if (testGoing === true) {
+    fps++ // increase FPS until stop at 1 second.
+    console.log("counting frames") // remove after testing.
+    requestAnimationFrame(framesRecursion)
+  }
+}*/
+//! -------------------------------------
+
 
 // * STATE MANAGEMENT FUNCTIONS
 const startGame = () => {
   startScreen.style.display = "none";
   gameScreen.style.display = "flex";
-  gameObj = new Game(playerSelected, backgroundSelected);
+  gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
 };
 
 const replayGame = () => {
   gameOverScreen.style.display = "none";
   gameScreen.style.display = "flex";
-  gameObj = new Game(playerSelected, backgroundSelected);
+  gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
 };
 
@@ -59,6 +86,7 @@ const changeBlackPlayer = () => {
   playerSelected = true;
 }
 
+// To change selected background inside gameObj, its value is passed to gameObj constructor
 const changeNightBackground = () => {
   backgroundSelected = false;
 }
@@ -67,7 +95,27 @@ const changeDayBackground = () => {
   backgroundSelected = true;
 }
 
+// To change selected level inside gameObj, its value is passed to gameObj constructor
+const changeEasyLevel = () => {
+  levelSelected = 1;
+}
+
+const changeMediumLevel = () => {
+  levelSelected = 2;
+}
+
+const changeHardLevel = () => {
+  levelSelected = 3;
+}
+
 // * ADD EVENT LISTENERS
+//! FPS
+/*window.addEventListener("load", () => {
+  detectFPS()
+  framesRecursion()
+})*/
+//! ---------------------------
+
 replayBtn.addEventListener("click", replayGame);
 startBtn.addEventListener("click", startGame);
 homeBtn.addEventListener("click", returnToHomePage);
@@ -75,6 +123,9 @@ redSpidermanBtn.addEventListener("click", changeRedPlayer);  // Red Spiderman ga
 blackSpidermanBtn.addEventListener("click", changeBlackPlayer)  // Black Spiderman gameObj
 nightBackgroundBtn.addEventListener("click", changeNightBackground)  // Night Background gameObj
 dayBackgroundBtn.addEventListener("click", changeDayBackground)  // Day Background gameObj
+easyLevelBtn.addEventListener("click", changeEasyLevel) // Easy level gameObj
+mediumLevelBtn.addEventListener("click", changeMediumLevel) // Mediumm level gameObj
+hardLevelBtn.addEventListener("click", changeHardLevel) // Hard level gameObj
 
 
 // Gets the current pressed key and checks if it has been previously added to the array
