@@ -36,12 +36,18 @@ class Spiderweb {
 class EnemyAttack {
   constructor(enemyX, enemyY, enemyType) {
     this.img = new Image();
-    this.img.src = "./images/14.png";
+    this.type = enemyType;
+    if (this.type === "ground_enemy") {
+      this.img.src = "./images/pink-attack.png";
+      this.h = 30;
+      this.w = 80;
+    } else if (this.type === "air_enemy") {
+      this.img.src = "./images/green-attack.png"
+      this.h = 60;
+      this.w = 110;
+    }
     this.x = enemyX;
     this.y = enemyY;
-    this.type = enemyType;
-    this.h = 10;
-    this.w = 80;
     this.speed = 3;
     this.existsOnScreen = true;
   }

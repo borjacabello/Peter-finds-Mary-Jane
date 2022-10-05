@@ -46,7 +46,7 @@ class GroundEnemy {
     this.h = 75;
     this.x = canvas.width;
     this.y = canvas.height - this.h - 60; // 50 is bottomMargin
-    this.vx = Math.random() * 2 + 2;
+    this.vx = Math.random() * 2 + 1;
     this.type = "ground_enemy";
     this.existsOnScreen = true;
   }

@@ -88,11 +88,11 @@ class Game {
     let randomizeEnemyAttack = Math.random() * 1;
 
     this.arrEnemies.forEach((eachEnemy) => {
-      if (this.frames % 60 === 0 && randomizeEnemyAttack < 0.4) {
+      if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.4) {
       if (eachEnemy.type === "ground_enemy" ||
           eachEnemy.type === "air_enemy") {
         this.enemyAttacksArr.push(
-          new EnemyAttack(eachEnemy.x, eachEnemy.y, eachEnemy.type)
+          new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
         );
       }
     }
@@ -154,11 +154,28 @@ class Game {
     });
   };
 
+  // Player collision with enemy attacks
+  playerAttackCollision = () => {
+    this.enemyAttacksArr.forEach( eachAttack => {
+      if (
+        this.player.x < eachAttack.x + eachAttack.w &&
+        this.player.x + this.player.w > eachAttack.x &&
+        this.player.y < eachAttack.y + eachAttack.h &&
+        this.player.h + this.player.y > eachAttack.y
+      ) {
+        this.gameOver();
+      }
+    })
+  }
+
+
+  // Increment general timer / 60 frames
   incrementTimer = () => {
     if (this.frames % 60 === 0) {
       this.timer++;
     }
   };
+
 
   // Add last attempts to the table located below canvas
   addRankingPositions = () => {
@@ -198,6 +215,7 @@ class Game {
     bodyTableDom.innerHTML = html;
   };
 
+  // Draws score and timer
   drawScore = () => {
     ctx.font = "200 25px Arial";
     let timerStr = `Timer: ${this.timer}`;
@@ -260,6 +278,7 @@ class Game {
     this.addAttackToEnemy();
     this.killEnemy();
     this.playerEnemyCollision();
+    this.playerAttackCollision();
     this.incrementTimer();
 
     //* 3. Elements Drawning
