@@ -10,38 +10,36 @@
   <body>
     <!-- MAIN SCREEN -->
     <div id="main-screen">
-      <section id="header">
+      <section id="header" class = "section">
         <h1>Peter finds Mary Jane</h1>
         <p>
           The villains have captured Mary Jane, will Spider-man (you) be able to
           rescue her?
         </p>
-        <img src="./images/spiderman-main-screen.png" alt="spiderman-image" />
-        <input type="text" id="name" placeholder="Introduce your name" />
-        <button id="start-btn">PLAY GAME</button>
+        <div id = "main-items">
+          <img src="./images/logo-face.png" alt="spiderman-image" />
+          <div id = "orange-buttons">
+            <input type="text" id="name" placeholder="Introduce your name" />
+            <button id="start-btn">PLAY GAME</button>
+          </div>
+        </div>
       </section>
 
-      <section id="instructions">
-        <h2>Instructions</h2>
+      <section id="instructions" class = "section">
+        <h2 id = "instructions-title">Instructions</h2>
         <p>
           Try to kill some of the most famous villains Spider-man has faced
-          during his travel and you probably will find Mary Jane at some point.
+          during his travel and you probably will find Mary Jane at some moment.
         </p>
-        <h3>Score</h3>
+        <h3 id = "instructions-score">Score</h3>
         <p>
           There will appear some kind of air or ground enemies along your way.
-          Each killed enemy will increase your total score by 25 points. Kill as
+          Each killed enemy will increase your total score by 10 points. Kill as
           much of them as you can!
-        </p>
-        <h3>Gifts</h3>
-        <p>
-          Mary Jane will be happier if you collect some of the special gifts
-          that will appear on the air. Each of them will increase your "Gifts"
-          marker by one.
         </p>
       </section>
 
-      <section id="commands">
+      <section id="commands" class = "section">
         <h2>Commands</h2>
         <div id="command-images">
           <img src="./images/keyboard-a.png" alt="keyboard-a-key" />
@@ -59,7 +57,7 @@
         </div>
       </section>
 
-      <section id="settings">
+      <section id="settings" class = "section">
         <h2>Settings</h2>
         <div id = "selectors">
           <div>
