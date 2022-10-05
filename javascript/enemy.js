@@ -4,10 +4,12 @@ class AirEnemy {
     this.levelSelection = selectedLevel;
     let randomizeAirEnemy = Math.random() * 1;
     this.img = new Image();
-    if (randomizeAirEnemy < 0.5) {
+    if (randomizeAirEnemy < 0.33) {
       this.img.src = "./images/duende.png";
-    } else {
+    } else if (randomizeAirEnemy > 0.33 && randomizeAirEnemy < 0.66) {
       this.img.src = "./images/hodgoblin.png";
+    } else {
+      this.img.src = "./images/morbius.png"
     }
     this.w = 55;
     this.h = 65;
@@ -48,10 +50,12 @@ class GroundEnemy {
     this.levelSelection = selectedLevel;
     let randomizeGroundEnemy = Math.random() * 1;
     this.img = new Image();
-    if (randomizeGroundEnemy < 0.5) {
+    if (randomizeGroundEnemy < 0.33) {
       this.img.src = "./images/rhino.png";
-    } else {
+    } else if (randomizeGroundEnemy > 0.33 && randomizeGroundEnemy < 0.66) {
       this.img.src = "./images/electro.png";
+    } else {
+      this.img.src = "./images/terra.png"
     }
     this.w = 65;
     this.h = 75;
@@ -86,10 +90,12 @@ class TopEnemy {
     this.levelSelection = selectedLevel;
     let randomizeTopEnemy = Math.random() * 1;
     this.img = new Image();
-    if (randomizeTopEnemy < 0.5) {
+    if (randomizeTopEnemy < 0.33) {
       this.img.src = "./images/octopus.png";
+    } else if (randomizeTopEnemy > 0.33 && randomizeTopEnemy < 0.66) {
+      this.img.src = "./images/carnage.png";
     } else {
-      this.img.src = "./images/venom.png";
+      this.img.src = "./images/krillin.png"
     }
     this.w = 65;
     this.h = 65;

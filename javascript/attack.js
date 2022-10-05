@@ -20,16 +20,6 @@ class Spiderweb {
   drawSpiderweb = () => {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
-
-  /*drawSpiderweb = () => {
-        ctx.beginPath();
-        ctx.strokeStyle = "white";
-        ctx.lineWidth = 3;
-        ctx.moveTo(this.x, this.y);
-        ctx.lineTo(this.w, this.y);
-        ctx.stroke();
-        ctx.closePath();
-    }*/
 }
 
 
@@ -39,15 +29,20 @@ class EnemyAttack {
     this.type = enemyType;
     if (this.type === "ground_enemy") {
       this.img.src = "./images/pink-attack.png";
-      this.h = 30;
+      this.h = 50;
       this.w = 80;
     } else if (this.type === "air_enemy") {
       this.img.src = "./images/green-attack.png"
       this.h = 60;
       this.w = 110;
+    } else if (this.type === "top_enemy") {
+      this.img.src = "./images/purple-attack.png"
+      this.h = 80;
+      this.w = 50;
     }
     this.x = enemyX;
     this.y = enemyY;
+    this.vx = 0;
     this.speed = 3;
     this.existsOnScreen = true;
   }
@@ -67,6 +62,15 @@ class EnemyAttack {
       if (this.y > canvas.height) {
         this.existsOnScreen = false;
       } else if (this.x + this.w < 0) {
+        this.existsOnScreen = false;
+      }
+    }
+
+    if (this.type === "top_enemy") {
+      this.x += this.vx;
+      this.y += this.speed;
+
+      if (this.y > canvas.height) {
         this.existsOnScreen = false;
       }
     }
