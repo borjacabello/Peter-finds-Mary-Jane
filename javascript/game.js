@@ -168,6 +168,22 @@ class Game {
     })
   }
 
+  // Spiderman's spiderwebs collision with enemy attacks
+  spiderwebAttackCollision = () => {
+    this.spiderwebsArr.forEach( (eachSpiderweb, index) => {
+      this.enemyAttacksArr.forEach( (eachAttack, index2) => {
+        if (
+          eachSpiderweb.x < eachAttack.x + eachAttack.w &&
+          eachSpiderweb.x + eachSpiderweb.w > eachAttack.x &&
+          eachSpiderweb.y < eachAttack.y + eachAttack.h &&
+          eachSpiderweb.h + eachSpiderweb.y > eachAttack.y
+        ) {
+          this.spiderwebsArr.splice(index, 1);
+          this.enemyAttacksArr.splice(index2, 1);
+        }
+      })
+    })
+  }
 
   // Increment general timer / 60 frames
   incrementTimer = () => {
@@ -279,6 +295,7 @@ class Game {
     this.killEnemy();
     this.playerEnemyCollision();
     this.playerAttackCollision();
+    this.spiderwebAttackCollision();
     this.incrementTimer();
 
     //* 3. Elements Drawning
