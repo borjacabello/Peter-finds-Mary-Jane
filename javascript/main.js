@@ -21,6 +21,8 @@ const dayBackgroundBtn = document.querySelector("#sunrise");
 const easyLevelBtn = document.querySelector("#easy-btn")
 const mediumLevelBtn = document.querySelector("#medium-btn")
 const hardLevelBtn = document.querySelector("#hard-btn")
+const musicOnBtn = document.querySelector("#music-on");
+const musicOffBtn = document.querySelector("#music-off");
 
 // HTML DOM elements
 const bodyTableDom = document.querySelector("#table-body")
@@ -28,11 +30,9 @@ const newTableRow = document.createElement("tr");
 const playerName = document.querySelector("#name")
 
 // Audios
-/*let audio1 = new Audio();
+let audio1 = new Audio();
 audio1.src = "./audios/background-song.mp3";
-audio1.autoplay = true;
-audio1.muted = true;
-audio1.volume = 0.5;*/
+audio1.volume = 0.4;
 
 let audioButton = new Audio();
 audioButton.src = "./audios/button.wav"
@@ -135,6 +135,15 @@ const changeHardLevel = () => {
   audioButton.play();
 }
 
+// To choose between on/off background music
+const reproduceBackgroundMusic = () => {
+  audio1.play();
+}
+
+const stopBackgroundMusic = () => {
+  audio1.pause();
+}
+
 // * ADD EVENT LISTENERS
 replayBtn.addEventListener("click", replayGame);
 startBtn.addEventListener("click", startGame);
@@ -147,6 +156,8 @@ dayBackgroundBtn.addEventListener("click", changeDayBackground)  // Day Backgrou
 easyLevelBtn.addEventListener("click", changeEasyLevel)  // Easy level gameObj
 mediumLevelBtn.addEventListener("click", changeMediumLevel) // Mediumm level gameObj
 hardLevelBtn.addEventListener("click", changeHardLevel) // Hard level gameObj
+musicOnBtn.addEventListener("click", reproduceBackgroundMusic);
+musicOffBtn.addEventListener("click", stopBackgroundMusic);
 
 
 // Gets the current pressed key and checks if it has been previously added to the array

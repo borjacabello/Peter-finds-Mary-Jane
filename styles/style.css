@@ -1,7 +1,7 @@
 /* Para asegurarnos de que la página es igual en diferentes navegadores*/
 * {
   box-sizing: border-box;
-  /*border: 1px solid black;*/
+  border: 1px solid black;
 }
 
 body {
@@ -75,7 +75,25 @@ body {
   align-items: center;
   justify-content: space-evenly;
   height: 150px;
-  width: 400px;
+  width: 600px;
+}
+
+#music-buttons {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  height: 60%;
+  width: 20%;
+}
+
+.music {
+  height: 35%;
+  border-radius: 10px;
+  background-color:aquamarine;
+}
+
+.music:focus {
+  background-color: red;
 }
 
 #orange-buttons {
