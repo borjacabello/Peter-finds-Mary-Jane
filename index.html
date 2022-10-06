@@ -23,8 +23,8 @@
             <button id="start-btn">PLAY GAME</button>
           </div>
           <div id = "music-buttons">
-            <button id = "music-on" class="music">Music: On</button>
-            <button id = "music-off" class="music">Music: Off</button>
+            <button id = "music-on" class="music">Music: ON</button>
+            <button id = "music-off" class="music">Music: OFF</button>
           </div>
         </div>
       </section>
@@ -32,14 +32,20 @@
       <section id="instructions" class="section">
         <h2 id="instructions-title">Instructions</h2>
         <p>
-          Try to kill some of the most famous villains Spider-man has faced
-          during his travel and you probably will find Mary Jane at some moment.
+          Try to kill some of the most famous villains Spider-Man has faced
+          during his travel and you probably will find Mary Jane at some moment
+          (she will appear in less than a minute). Be cautious!
+          You only have 3 lives.
         </p>
-        <h3 id="instructions-score">Score</h3>
         <p>
           There will appear some kind of air or ground enemies along your way.
           Each killed enemy will increase your total score by 10 points. Kill as
           much of them as you can!
+        </p>
+        <p>
+          Here below you can choose which Spiderman to play with, a background city
+          for your adventure and the most suitable level for you. DEFAULT: red Spider-Man,
+          night city and easy level.
         </p>
       </section>
 
@@ -141,18 +147,20 @@
     <div id="game-over-screen">
       <h1>GAME OVER</h1>
       <img src="./images/peter-parker-over.jpg" alt="peter-parker" />
-      <p>
+      <p id = "wait-paragraph">
         Mary Jane will have to wait some other superheroe to rescue her. Or
         maybe...
       </p>
-      <button id="restart-btn">You can try again!</button>
-      <button id="gameover-home-btn">Return to home page</button>
+      <div id = "gameover-choose">
+        <button id="restart-btn" class = "ending-btn">You can try again!</button>
+        <button id="gameover-home-btn" class = "ending-btn">Return to home page</button>
+      </div>
     </div>
 
     <!-- GAME PASSED SCREEN -->
     <div id="game-passed-screen">
       <h1>You are a master!</h1>
-      <p>Mary Jane will thank you forever.</p>
+      <p id ="thanks-paragraph">Mary Jane will thank you forever.</p>
       <img src="./images/mary-jane-kiss.jpg" alt="mary-jane-and-spiderman" />
       <button id="go-home-page-btn">Go to home page</button>
     </div>

@@ -1,11 +1,12 @@
-/* Para asegurarnos de que la página es igual en diferentes navegadores*/
+@import url('https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap');
+
 * {
   box-sizing: border-box;
   /*border: 1px solid black;*/
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Black Ops One", cursive;
   margin: 0;
   padding: 0;
   width: 100vw;
@@ -14,8 +15,6 @@ body {
 
 /** MAIN SCREEN */
 #main-screen {
-  /*background-image: url("../images/wallpaper.jpg");
-  background-repeat: round;*/
   width: 100%;
   height: 100%;
   margin: 0;
@@ -24,17 +23,19 @@ body {
   grid-template-columns: 60% 36%;
   grid-template-rows: 35% 30% 20%;
   gap: 30px;
-  animation: colors 5s infinite;
+  animation: scroll 70s linear infinite;
+  background: url("../images/main-image.png");
+  background-size: cover;
 }
 
-@keyframes colors {
-  0% {background-color: rgb(2, 19, 36)}
-  50% {background-color: rgba(22, 5, 51, 0.836)}
-  100% {background-color: rgb(4, 8, 48)}
+@keyframes scroll {
+  100%{
+   background-position: -2000px 0px;
+ }
 }
 
 .section {
-  background-color: skyblue;
+  background-color:lightgoldenrodyellow;
 }
 
 
@@ -57,15 +58,15 @@ body {
 }
 
 #header h1 {
-  font-size: 50px;
-  color: linen;
+  font-size: 55px;
+  color: orangered;
   font-weight: bolder;
   margin: 0;
 }
 
 #header p {
-  font-size: 18px;
-  color: #00beef;
+  font-size: 20px;
+  color: rgb(20, 30, 40);
   margin: 6px;
 }
 
@@ -89,7 +90,8 @@ body {
 .music {
   height: 35%;
   border-radius: 10px;
-  background-color:aquamarine;
+  background-color:rgb(20, 30, 40);
+  color: white;
 }
 
 .music:focus {
@@ -127,9 +129,9 @@ body {
   grid-row: 2 / 3;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-evenly;
-  padding: 6px;
+  padding: 0 8px 8px 8px;
   margin: 0;
   border-radius: 10px;
   color: rgb(4, 8, 48);
@@ -143,13 +145,9 @@ body {
   color: red;
 }
 
-#instructions-score {
-  color:firebrick
-}
-
 #instructions p {
-  font-size: 16px;
-  font-weight: 700;
+  font-size: 13px;
+  font-weight: 500;
 }
 
 
@@ -161,6 +159,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-radius: 10px;
 }
 
 #commands p, li {
@@ -182,6 +181,7 @@ body {
 
 #commands-title {
   margin: 0;
+  color: red;
 }
 
 #space-key {
@@ -212,11 +212,13 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  border-radius: 10px;
 }
 
 #settings h2 {
   text-align: center;
   margin: -10px 0 0;
+  color:red;
 }
 
 #selectors {
@@ -235,17 +237,18 @@ body {
 
 /*player-selectors*/
 #player-selection {
-  width: 33%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
 }
 
 #player-selection button {
-  width: 130px;
+  width: 120px;
   height: 40px;
   padding: 0;
   margin-right: 6px;
+  margin-left: 2px;
   border-radius: 10px;
 }
 
@@ -288,7 +291,7 @@ body {
 
 /*background-selectors*/
 #background-selection {
-  width: 33%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -343,7 +346,7 @@ body {
 
 /*level-selectors*/
 #level-selection {
-  width: 33%;
+  width: 30%;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -368,6 +371,10 @@ body {
   margin-right: 6px;
   margin-left: 3px;
   border-radius: 10px;
+}
+
+#settings button {
+  background-color:mintcream;
 }
 
 #settings button:focus {
@@ -442,7 +449,7 @@ table td {
 
 /**GAME OVER SCREEN*/
 #game-over-screen {
-  background-color: linen;
+  background-color:palegreen;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -450,17 +457,59 @@ table td {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  animation: scroll 70s linear infinite;
+  background: url("../images/gameover-background.png");
+  background-size: cover;
 }
 
 #game-over-screen img {
   width: 400px;
   height: 200px;
+  border-radius: 10px;
 }
 
+#game-over-screen h1 {
+  width: 50%;
+  height: 25%;
+  margin: 0;
+  font-size: 100px;
+  text-align: center;
+  background: #1909AD;
+  background: linear-gradient(to right, #0c0a20 0%, #d42a0c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#wait-paragraph {
+  font-size: 22px;
+  text-align: center;
+}
+
+#gameover-choose {
+  width: 50%;
+  height: 7%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.ending-btn {
+  width: 45%;
+  height: 80%;
+  border-radius: 10px;
+  font-size: 18px;
+  font-weight: 600;
+  background-color: #00beef;
+}
+
+.ending-btn:hover {
+  background-color: greenyellow;
+}
 
 /**GAME PASSED SCREEN*/
 #game-passed-screen {
-  background-color: linen;
   margin: 0;
   width: 100vw;
   height: 100vh;
@@ -468,8 +517,48 @@ table td {
   flex-direction: column;
   align-items: center;
   justify-content: space-evenly;
+  animation: scroll 70s linear infinite;
+  background: url("../images/luz.png");
+  background-size: cover;
 }
 
+#game-passed-screen h1 {
+  width: 50%;
+  height: 25%;
+  margin: 0;
+  font-size: 80px;
+  text-align: center;
+  background: #1909AD;
+  background: linear-gradient(to right, #966a0d 0%, #d42a0c 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#thanks-paragraph {
+  font-size: 24px;
+  text-align: center;
+  color: orangered;
+}
+
+#game-passed-screen img {
+  width: 450px;
+  height: auto;
+  border-radius: 10px;
+}
+
+#go-home-page-btn {
+  width: 30%;
+  height: 8%;
+  border-radius: 10px;
+  font-size: 25px;
+  font-weight: 600;
+  background-color: #00beef;
+}
+
+#go-home-page-btn:hover {
+  background-color: greenyellow;
+}
 
 /** STATES*/
 #game-screen,

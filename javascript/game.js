@@ -377,7 +377,6 @@ class Game {
 
   // Add last attempts to the table located below canvas using DOM: name, time, score
   addRankingPositions = () => {
-    console.log(rankingValues);
     let html = "";
     let finalTimer = this.timer;
     let finalScore = this.score;
