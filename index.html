@@ -10,28 +10,28 @@
   <body>
     <!-- MAIN SCREEN -->
     <div id="main-screen">
-      <section id="header" class = "section">
+      <section id="header" class="section">
         <h1>Peter finds Mary Jane</h1>
         <p>
           The villains have captured Mary Jane, will Spider-man (you) be able to
           rescue her?
         </p>
-        <div id = "main-items">
+        <div id="main-items">
           <img src="./images/logo-face.png" alt="spiderman-image" />
-          <div id = "orange-buttons">
+          <div id="orange-buttons">
             <input type="text" id="name" placeholder="Introduce your name" />
             <button id="start-btn">PLAY GAME</button>
           </div>
         </div>
       </section>
 
-      <section id="instructions" class = "section">
-        <h2 id = "instructions-title">Instructions</h2>
+      <section id="instructions" class="section">
+        <h2 id="instructions-title">Instructions</h2>
         <p>
           Try to kill some of the most famous villains Spider-man has faced
           during his travel and you probably will find Mary Jane at some moment.
         </p>
-        <h3 id = "instructions-score">Score</h3>
+        <h3 id="instructions-score">Score</h3>
         <p>
           There will appear some kind of air or ground enemies along your way.
           Each killed enemy will increase your total score by 10 points. Kill as
@@ -39,47 +39,78 @@
         </p>
       </section>
 
-      <section id="commands" class = "section">
-        <h2>Commands</h2>
+      <section id="commands" class="section">
+        <h2 id="commands-title">Commands</h2>
         <div id="command-images">
-          <img src="./images/keyboard-a.png" alt="keyboard-a-key" />
-          <img src="./images/keyboard-w.png" alt="keyboard-w-key" />
-          <img src="./images/keyboard-d.png" alt="keyboard-d-key" />
+          <img
+            src="./images/keyboard-a.png"
+            alt="keyboard-a-key"
+            class="keyboard"
+          />
+          <img
+            src="./images/keyboard-w.png"
+            alt="keyboard-w-key"
+            class="keyboard"
+          />
+          <img
+            src="./images/keyboard-d.png"
+            alt="keyboard-d-key"
+            class="keyboard"
+          />
         </div>
-        <ul>
+        <ul id="commands-ul">
           <li>Move left</li>
           <li>Move up</li>
           <li>Move right</li>
         </ul>
         <div>
-          <img src="./images/keyboard-space.png" alt="keyboard-space-key" />
-          <p>Shoot</p>
+          <img
+            src="./images/keyboard-space.png"
+            alt="keyboard-space-key"
+            id="space-key"
+          />
+          <p id="shoot">Shoot</p>
         </div>
       </section>
 
-      <section id="settings" class = "section">
+      <section id="settings" class="section">
         <h2>Settings</h2>
-        <div id = "selectors">
-          <div>
+        <div id="selectors">
+          <div id="player-selection">
             <h3>Player Selection</h3>
-            <div>
-              <button id = "red-spiderman">Red Spiderman</button>
-              <button id = "black-spiderman">Black Spiderman</button>
+            <div id="player-img-buttons">
+              <div id="red-spiderman-selector">
+                <img src="./images/red-spiderman.png" alt="red-spiderman" />
+                <button id="red-spiderman">Red Spiderman</button>
+              </div>
+              <div id="black-spiderman-selector">
+                <img src="./images/black-spiderman.png" alt="black-spiderman" />
+                <button id="black-spiderman">Black Spiderman</button>
+              </div>
             </div>
           </div>
-          <div>
+          <div id="background-selection">
             <h3>Background Selection</h3>
-            <div>
-              <button id = "city-night">City Night</button>
-              <button id = "sunrise">Sunrise</button>
+            <div id="background-img-buttons">
+              <div id="night-background-selector">
+                <img
+                  src="./images/background-night.jpg"
+                  alt="background-night"
+                />
+                <button id="city-night">City Night</button>
+              </div>
+              <div id="day-background-selector">
+                <img src="./images/background-day.jpg" alt="background-day" />
+                <button id="sunrise">Sunrise</button>
+              </div>
             </div>
           </div>
-          <div>
+          <div id="level-selection">
             <h3>Level</h3>
-            <div>
-              <button id = "easy-btn">Easy</button>
-              <button id = "medium-btn">Medium</button>
-              <button id = "hard-btn">Hard</button>
+            <div id="difficulty-buttons">
+              <button id="easy-btn">Easy</button>
+              <button id="medium-btn">Medium</button>
+              <button id="hard-btn">Hard</button>
             </div>
           </div>
         </div>
@@ -89,17 +120,16 @@
     <!-- GAME SCREEN -->
     <div id="game-screen">
       <canvas id="my-canvas" width="950" height="550"></canvas>
-      <h1>Last Attempts</h1>
+      <h1 id="last-attempts">Last Attempts</h1>
       <table>
         <thead>
           <tr>
-            <th>Player Name</th>
-            <th>Time</th>
-            <th>Score</th>
+            <th id="th-1">Player Name</th>
+            <th id="th-2">Time</th>
+            <th id="th-3">Score</th>
           </tr>
         </thead>
-        <tbody id="table-body">
-        </tbody>
+        <tbody id="table-body"></tbody>
       </table>
     </div>
 
