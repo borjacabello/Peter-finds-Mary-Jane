@@ -21,12 +21,12 @@ class AirEnemy {
     } else if (this.levelSelection === 2) {
       this.vx = Math.random() * 2 + 2;
     } else if (this.levelSelection === 3) {
-      this.vx = Math.random() * 2 + 2;
+      this.vx = Math.random() * 3 + 2;
     }
     this.vy = 0;
     this.curve = Math.random() * 0.3;
     this.type = "air_enemy";
-    this.existsOnScreen = true; // enemy hasn't gone all the way through the canvas left edge
+    this.existsOnScreen = true; // Enemy hasn't gone all the way through the canvas left edge
   }
 
   moveEnemy = () => {
@@ -66,7 +66,7 @@ class GroundEnemy {
     } else if (this.levelSelection === 2) {
       this.vx = Math.random() * 2 + 2;
     } else if (this.levelSelection === 3) {
-      this.vx = Math.random() * 2 + 2;
+      this.vx = Math.random() * 3 + 2;
     }
     this.type = "ground_enemy";
     this.existsOnScreen = true;

@@ -4,12 +4,13 @@ class Spiderweb {
     this.img.src = "./images/spiderweb.png";
     this.h = 25;
     this.w = 55;
-    this.x = x; // Spiderman's width
+    this.x = x; // Spiderman's x position
     this.y = y;
     this.speed = 5;
     this.existsOnScreen = true;
   }
 
+  // Move Spiderman attacks
   moveSpiderweb = () => {
     this.x += this.speed;
     if (this.x > canvas.width) {
@@ -17,12 +18,13 @@ class Spiderweb {
     }
   };
 
+  // Draw Spirderman attacks
   drawSpiderweb = () => {
     ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
   }
 }
 
-
+// Enemy attacks
 class EnemyAttack {
   constructor(enemyX, enemyY, enemyType) {
     this.img = new Image();

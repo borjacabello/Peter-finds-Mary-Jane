@@ -1,7 +1,7 @@
 /* Para asegurarnos de que la página es igual en diferentes navegadores*/
 * {
   box-sizing: border-box;
-  border: 1px solid black;
+  /*border: 1px solid black;*/
 }
 
 body {

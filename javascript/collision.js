@@ -1,3 +1,4 @@
+// Collision between Spiderman's and enemy attacks
 class AttackCollision {
   constructor(x, y) {
     this.img = new Image();
@@ -13,7 +14,7 @@ class AttackCollision {
   };
 }
 
-
+// Spiderman's collision with an enemy
 class EnemyCollision {
     constructor(x, y) {
       this.img = new Image();

@@ -73,6 +73,7 @@ const startGame = () => {
   gameScreen.style.display = "flex";
   gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
+  audio1.pause();
   gameObj.audio.play();
 };
 

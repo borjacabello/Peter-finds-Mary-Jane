@@ -11,13 +11,13 @@ class Game {
     this.collisionImagesArr = [];
     this.enemyCollisionImagesArr = [];
     this.frames = 0;
-    this.spacePressed = 0;
-    this.timerMaryJane = 0;
+    this.spacePressed = 0; // To hold player shoot
+    this.timerMaryJane = 0; // To specially hold Mary Jane aparitions and time on screen
     this.score = 0;
     this.isGameOn = true;
     this.timer = this.frames / 60;
     this.audio = new Audio();
-    if (this.levelSelection === 1 || this.levelSelection === undefined) {
+    if (this.levelSelection === 1 || this.levelSelection === undefined) {  // Different audio per level
       this.audio.src = "./audios/level1.wav";
     } else if (this.levelSelection === 2) {
       this.audio.src = "./audios/level2.mp3";
@@ -27,8 +27,8 @@ class Game {
     this.audio.volume = 0.4;
   }
 
+  // Add enemies to the enemies array
   addEnemy = () => {
-    // 20 seconds = 1200 frames
     let randomFramesMaryJaneAppearance = Math.floor(Math.random() * 1200); // Between 0 and 20 seconds
 
     if (this.levelSelection === 1 || this.levelSelection === undefined) {
@@ -40,7 +40,7 @@ class Game {
         let airEnemy = new AirEnemy(this.levelSelection);
         this.arrEnemies.push(airEnemy);
       }
-      if (this.frames % 140 === 0) {
+      if (this.frames % 160 === 0) {
         let topEnemy = new TopEnemy(this.levelSelection);
         this.arrEnemies.push(topEnemy);
       }
@@ -77,7 +77,6 @@ class Game {
     }
 
     if (this.timerMaryJane % (600 + randomFramesMaryJaneAppearance) === 0) {
-      // Mary Jane appears at intervals between 20 and 30 seconds
       this.timerMaryJane = 0; // Timer set to 0 when mary jane appears
       let maryjaneEnemy = new MaryJane();
       this.arrEnemies.push(maryjaneEnemy);
@@ -98,13 +97,13 @@ class Game {
         // Delete Mary jane if spiderman doesn't collision with she
         if (this.timerMaryJane % 420 === 0 && this.timerMaryJane !== 0) {
           // Mary jane visible 7 seconds
-          // ! this.timerMaryJane = 0;
           this.arrEnemies.splice(index, 1);
         }
       }
     });
   };
 
+  // Add spiderwebs to Spideerman player
   addSpiderwebToPlayer = () => {
     // Adding spiderwebs objects to the spiderwebs array
     if (arrPressedKeys.includes("Space")) {
@@ -133,7 +132,7 @@ class Game {
       if (this.levelSelection === 1 || this.levelSelection === undefined) {
         if (
           this.frames % 80 === 0 &&
-          randomizeEnemyAttack < 0.4 &&
+          randomizeEnemyAttack < 0.3 &&
           eachEnemy.type === "ground_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -143,7 +142,7 @@ class Game {
 
         if (
           this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.4 &&
+          randomizeEnemyAttack < 0.3 &&
           eachEnemy.type === "air_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -153,7 +152,7 @@ class Game {
 
         if (
           this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.4 &&
+          randomizeEnemyAttack < 0.3 &&
           eachEnemy.type === "top_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -164,8 +163,8 @@ class Game {
 
       if (this.levelSelection === 2) {
         if (
-          this.frames % 80 === 0 &&
-          randomizeEnemyAttack < 0.5 &&
+          this.frames % 70 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
           eachEnemy.type === "ground_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -174,8 +173,8 @@ class Game {
         }
 
         if (
-          this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.5 &&
+          this.frames % 80 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
           eachEnemy.type === "air_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -184,8 +183,8 @@ class Game {
         }
 
         if (
-          this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.5 &&
+          this.frames % 80 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
           eachEnemy.type === "top_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -196,8 +195,8 @@ class Game {
 
       if (this.levelSelection === 3) {
         if (
-          this.frames % 80 === 0 &&
-          randomizeEnemyAttack < 0.6 &&
+          this.frames % 50 === 0 &&
+          randomizeEnemyAttack < 0.7 &&
           eachEnemy.type === "ground_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -206,8 +205,8 @@ class Game {
         }
 
         if (
-          this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.6 &&
+          this.frames % 60 === 0 &&
+          randomizeEnemyAttack < 0.7 &&
           eachEnemy.type === "air_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -216,8 +215,8 @@ class Game {
         }
 
         if (
-          this.frames % 90 === 0 &&
-          randomizeEnemyAttack < 0.6 &&
+          this.frames % 60 === 0 &&
+          randomizeEnemyAttack < 0.7 &&
           eachEnemy.type === "top_enemy"
         ) {
           this.enemyAttacksArr.push(
@@ -262,7 +261,7 @@ class Game {
         }
       });
     });
-    if (this.frames % 30 === 0 && this.frames !== 0) {
+    if (this.frames % 20 === 0 && this.frames !== 0) {
       this.enemyCollisionImagesArr.shift();
     }
   };
@@ -286,7 +285,7 @@ class Game {
             hitAudio3.play();
             this.arrEnemies.splice(index, 1);
             if (this.playerSelection) {
-              this.player.img.src = "./images/black-spiderman-2.png"
+              this.player.img.src = "./images/black-spiderman-2.png" // Spiderman image changes
             } else {
               this.player.img.src = "./images/red-spiderman-2.png"
             }
@@ -324,7 +323,7 @@ class Game {
           hitAudio3.play();
           this.enemyAttacksArr.splice(index, 1);
           if (this.playerSelection) {
-            this.player.img.src = "./images/black-spiderman-2.png"
+            this.player.img.src = "./images/black-spiderman-2.png" // Spiderman image changes
           } else {
             this.player.img.src = "./images/red-spiderman-2.png"
           }
@@ -364,7 +363,7 @@ class Game {
         }
       });
     });
-    if (this.frames % 30 === 0 && this.frames !== 0) {
+    if (this.frames % 20 === 0 && this.frames !== 0) { // Time image collision appears on screen
       this.collisionImagesArr.shift();
     }
   };
@@ -376,7 +375,7 @@ class Game {
     }
   };
 
-  // Add last attempts to the table located below canvas
+  // Add last attempts to the table located below canvas using DOM: name, time, score
   addRankingPositions = () => {
     console.log(rankingValues);
     let html = "";
@@ -414,7 +413,7 @@ class Game {
     bodyTableDom.innerHTML = html;
   };
 
-  // Draws score and timer
+  // Draws score, timer and lives
   drawScore = () => {
     ctx.font = "200 25px Arial";
     let timerStr = `Timer: ${this.timer}`;
@@ -449,15 +448,8 @@ class Game {
     finalAudio.play();
   };
 
+  // Main recursive game loop
   gameLoop = () => {
-    /*if (this.frames % 60 === 0) {
-      console.log("seconds in game", this.time)
-      let newDate = new Date()
-      let realTimePassed = newDate - this.lastTime
-      console.log(realTimePassed / 1000)
-      this.time++
-    }*/
-
     this.frames++;
     this.timerMaryJane++;
 

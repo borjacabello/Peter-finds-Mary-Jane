@@ -18,12 +18,13 @@ class Player {
         this.lives = 3;
     }
 
+    // Checks for Spiderman on air or ground
     playerOnGround = () => {
         // Return if the player is on the air
         return this.y >= canvas.height - this.h - this.bottomMargin;
     }
 
-
+    // Move Spiderman
     movePlayer = () => {
         // Horizontal movement for every frame
         this.x += this.speed;  // Initially 0, doesn't move
@@ -57,6 +58,7 @@ class Player {
         
     }
 
+    // Draw Spiderman
     drawPlayer = () => {
         ctx.drawImage(this.img, this.x, this.y, this.w, this.h);
     }
