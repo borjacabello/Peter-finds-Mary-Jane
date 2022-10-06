@@ -31,6 +31,9 @@ class Game {
     this.hitAudio2 = new Audio();
     this.hitAudio2.src = "./audios/hit2.wav";
     this.hitAudio2.volume = 0.4;
+    this.hitAudio3 = new Audio();
+    this.hitAudio3.src = "./audios/hurt.ogg"
+    this.hitAudio3.volume = 0.4;
   }
 
   addEnemy = () => {
@@ -289,6 +292,7 @@ class Game {
         ) {
           // Collision with air or ground enemy detected!
           if (this.player.lives === 3) {
+            this.hitAudio3.play();
             this.arrEnemies.splice(index, 1);
             if (this.playerSelection) {
               this.player.img.src = "./images/black-spiderman-2.png"
@@ -297,6 +301,7 @@ class Game {
             }
             this.player.lives--;
           } else if (this.player.lives === 2) {
+            this.hitAudio3.play();
             this.arrEnemies.splice(index, 1);
             if (this.playerSelection) {
               this.player.img.src = "./images/black-spiderman-3.png"
@@ -325,6 +330,7 @@ class Game {
       ) {
         // Collision with enemy attack detected!
         if (this.player.lives === 3) {
+          this.hitAudio3.play();
           this.enemyAttacksArr.splice(index, 1);
           if (this.playerSelection) {
             this.player.img.src = "./images/black-spiderman-2.png"
@@ -333,6 +339,7 @@ class Game {
           }
           this.player.lives--;
         } else if (this.player.lives === 2) {
+          this.hitAudio3.play();
           this.enemyAttacksArr.splice(index, 1);
           if (this.playerSelection) {
             this.player.img.src = "./images/black-spiderman-3.png"
@@ -427,7 +434,7 @@ class Game {
     ctx.fillText(scoreStr, 10, 80);
 
     ctx.font = "200 25px Arial";
-    let lifeStr = `Life: ${this.lives}`;
+    let lifeStr = `Lives: ${this.player.lives}`;
     ctx.fillText(lifeStr, 10, 120);
   };
 
