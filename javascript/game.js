@@ -22,7 +22,7 @@ class Game {
     } else if (this.levelSelection === 2) {
       this.audio.src = "./audios/level2.mp3";
     } else {
-      this.audio.src = "./audios/level3.wav"
+      this.audio.src = "./audios/level3.wav";
     }
     this.audio.volume = 0.4;
     this.hitAudio = new Audio();
@@ -137,19 +137,31 @@ class Game {
 
     this.arrEnemies.forEach((eachEnemy) => {
       if (this.levelSelection === 1 || this.levelSelection === undefined) {
-        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.4 && eachEnemy.type === "ground_enemy") {
-          this.enemyAttacksArr.push(
-            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
-          );
-        }
-  
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.4 && eachEnemy.type === "air_enemy") {
+        if (
+          this.frames % 80 === 0 &&
+          randomizeEnemyAttack < 0.4 &&
+          eachEnemy.type === "ground_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
         }
 
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.4 && eachEnemy.type === "top_enemy") {
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.4 &&
+          eachEnemy.type === "air_enemy"
+        ) {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.4 &&
+          eachEnemy.type === "top_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
@@ -157,19 +169,31 @@ class Game {
       }
 
       if (this.levelSelection === 2) {
-        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.5 && eachEnemy.type === "ground_enemy") {
-          this.enemyAttacksArr.push(
-            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
-          );
-        }
-  
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.5 && eachEnemy.type === "air_enemy") {
+        if (
+          this.frames % 80 === 0 &&
+          randomizeEnemyAttack < 0.5 &&
+          eachEnemy.type === "ground_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
         }
 
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.5 && eachEnemy.type === "top_enemy") {
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.5 &&
+          eachEnemy.type === "air_enemy"
+        ) {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.5 &&
+          eachEnemy.type === "top_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
@@ -177,25 +201,36 @@ class Game {
       }
 
       if (this.levelSelection === 3) {
-        if (this.frames % 80 === 0 && randomizeEnemyAttack < 0.6 && eachEnemy.type === "ground_enemy") {
-          this.enemyAttacksArr.push(
-            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
-          );
-        }
-  
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.6 && eachEnemy.type === "air_enemy") {
+        if (
+          this.frames % 80 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
+          eachEnemy.type === "ground_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
         }
 
-        if (this.frames % 90 === 0 && randomizeEnemyAttack < 0.6 && eachEnemy.type === "top_enemy") {
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
+          eachEnemy.type === "air_enemy"
+        ) {
+          this.enemyAttacksArr.push(
+            new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
+          );
+        }
+
+        if (
+          this.frames % 90 === 0 &&
+          randomizeEnemyAttack < 0.6 &&
+          eachEnemy.type === "top_enemy"
+        ) {
           this.enemyAttacksArr.push(
             new EnemyAttack(eachEnemy.x, eachEnemy.y + 30, eachEnemy.type)
           );
         }
       }
-
     });
 
     // Clean enemy attacks array
@@ -224,7 +259,9 @@ class Game {
             // Collision between spiderweb (projectile) and Enemy detected!
             this.arrEnemies.splice(index, 1);
             this.spiderwebsArr.splice(index2, 1);
-            this.enemyCollisionImagesArr.push(new EnemyCollision(eachEnemy.x, eachEnemy.y));
+            this.enemyCollisionImagesArr.push(
+              new EnemyCollision(eachEnemy.x, eachEnemy.y)
+            );
             this.score += 10; // Score increases for each killed enemy
             this.hitAudio.play();
           }
@@ -238,7 +275,7 @@ class Game {
 
   // Player collision with enemies
   playerEnemyCollision = () => {
-    this.arrEnemies.forEach((eachEnemy) => {
+    this.arrEnemies.forEach((eachEnemy, index) => {
       if (
         this.player.x < eachEnemy.x + eachEnemy.w &&
         this.player.x + this.player.w > eachEnemy.x &&
@@ -251,7 +288,25 @@ class Game {
           eachEnemy.type === "top_enemy"
         ) {
           // Collision with air or ground enemy detected!
-          this.gameOver();
+          if (this.player.lives === 3) {
+            this.arrEnemies.splice(index, 1);
+            if (this.playerSelection) {
+              this.player.img.src = "./images/black-spiderman-2.png"
+            } else {
+              this.player.img.src = "./images/red-spiderman-2.png"
+            }
+            this.player.lives--;
+          } else if (this.player.lives === 2) {
+            this.arrEnemies.splice(index, 1);
+            if (this.playerSelection) {
+              this.player.img.src = "./images/black-spiderman-3.png"
+            } else {
+              this.player.img.src = "./images/red-spiderman-3.png"
+            }
+            this.player.lives--;
+          } else if (this.player.lives === 1) {
+            this.gameOver();
+          }
         } else if (eachEnemy.type === "mary_jane") {
           this.gamePassed();
         }
@@ -261,14 +316,33 @@ class Game {
 
   // Player collision with enemy attacks
   playerAttackCollision = () => {
-    this.enemyAttacksArr.forEach((eachAttack) => {
+    this.enemyAttacksArr.forEach((eachAttack, index) => {
       if (
         this.player.x < eachAttack.x + eachAttack.w &&
         this.player.x + this.player.w > eachAttack.x &&
         this.player.y < eachAttack.y + eachAttack.h &&
         this.player.h + this.player.y > eachAttack.y
       ) {
-        this.gameOver();
+        // Collision with enemy attack detected!
+        if (this.player.lives === 3) {
+          this.enemyAttacksArr.splice(index, 1);
+          if (this.playerSelection) {
+            this.player.img.src = "./images/black-spiderman-2.png"
+          } else {
+            this.player.img.src = "./images/red-spiderman-2.png"
+          }
+          this.player.lives--;
+        } else if (this.player.lives === 2) {
+          this.enemyAttacksArr.splice(index, 1);
+          if (this.playerSelection) {
+            this.player.img.src = "./images/black-spiderman-3.png"
+          } else {
+            this.player.img.src = "./images/red-spiderman-3.png"
+          }
+          this.player.lives--;
+        } else if (this.player.lives === 1) {
+          this.gameOver();
+        }
       }
     });
   };
@@ -285,7 +359,9 @@ class Game {
         ) {
           this.spiderwebsArr.splice(index, 1);
           this.enemyAttacksArr.splice(index2, 1);
-          this.collisionImagesArr.push(new AttackCollision(eachAttack.x, eachAttack.y));
+          this.collisionImagesArr.push(
+            new AttackCollision(eachAttack.x, eachAttack.y)
+          );
           this.hitAudio2.play();
         }
       });
@@ -349,6 +425,10 @@ class Game {
     ctx.font = "200 25px Arial";
     let scoreStr = `Score: ${this.score}`;
     ctx.fillText(scoreStr, 10, 80);
+
+    ctx.font = "200 25px Arial";
+    let lifeStr = `Life: ${this.lives}`;
+    ctx.fillText(lifeStr, 10, 120);
   };
 
   // Game ends with a collision and gameover screen is displayed
@@ -425,14 +505,13 @@ class Game {
       eachAttack.drawEnemyAttack();
     });
 
-    this.collisionImagesArr.forEach( eachImage => {
+    this.collisionImagesArr.forEach((eachImage) => {
       eachImage.drawAttackCollision();
-    })
+    });
 
-    this.enemyCollisionImagesArr.forEach( eachImage => {
+    this.enemyCollisionImagesArr.forEach((eachImage) => {
       eachImage.drawEnemyCollision();
-    })
-
+    });
 
     this.drawScore();
 

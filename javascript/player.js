@@ -15,6 +15,7 @@ class Player {
         this.gravity = 1;
         this.speed = 0;     // Velocity used to indicate or establish that the player is stopped
         this.maxSpeed = 3.6; // Velocity in pixels per frame, to use when movement begins
+        this.lives = 3;
     }
 
     playerOnGround = () => {
