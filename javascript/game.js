@@ -25,15 +25,6 @@ class Game {
       this.audio.src = "./audios/level3.wav";
     }
     this.audio.volume = 0.4;
-    this.hitAudio = new Audio();
-    this.hitAudio.src = "./audios/hit.wav";
-    this.hitAudio.volume = 0.4;
-    this.hitAudio2 = new Audio();
-    this.hitAudio2.src = "./audios/hit2.wav";
-    this.hitAudio2.volume = 0.4;
-    this.hitAudio3 = new Audio();
-    this.hitAudio3.src = "./audios/hurt.ogg"
-    this.hitAudio3.volume = 0.4;
   }
 
   addEnemy = () => {
@@ -266,7 +257,7 @@ class Game {
               new EnemyCollision(eachEnemy.x, eachEnemy.y)
             );
             this.score += 10; // Score increases for each killed enemy
-            this.hitAudio.play();
+            hitAudio.play();
           }
         }
       });
@@ -292,7 +283,7 @@ class Game {
         ) {
           // Collision with air or ground enemy detected!
           if (this.player.lives === 3) {
-            this.hitAudio3.play();
+            hitAudio3.play();
             this.arrEnemies.splice(index, 1);
             if (this.playerSelection) {
               this.player.img.src = "./images/black-spiderman-2.png"
@@ -301,7 +292,7 @@ class Game {
             }
             this.player.lives--;
           } else if (this.player.lives === 2) {
-            this.hitAudio3.play();
+            hitAudio3.play();
             this.arrEnemies.splice(index, 1);
             if (this.playerSelection) {
               this.player.img.src = "./images/black-spiderman-3.png"
@@ -330,7 +321,7 @@ class Game {
       ) {
         // Collision with enemy attack detected!
         if (this.player.lives === 3) {
-          this.hitAudio3.play();
+          hitAudio3.play();
           this.enemyAttacksArr.splice(index, 1);
           if (this.playerSelection) {
             this.player.img.src = "./images/black-spiderman-2.png"
@@ -339,7 +330,7 @@ class Game {
           }
           this.player.lives--;
         } else if (this.player.lives === 2) {
-          this.hitAudio3.play();
+          hitAudio3.play();
           this.enemyAttacksArr.splice(index, 1);
           if (this.playerSelection) {
             this.player.img.src = "./images/black-spiderman-3.png"
@@ -369,7 +360,7 @@ class Game {
           this.collisionImagesArr.push(
             new AttackCollision(eachAttack.x, eachAttack.y)
           );
-          this.hitAudio2.play();
+          hitAudio2.play();
         }
       });
     });
@@ -445,6 +436,7 @@ class Game {
     gameScreen.style.display = "none";
     gameOverScreen.style.display = "flex";
     this.audio.pause();
+    audioGameOver.play();
   };
 
   // Game ends finding Mary Jane and passed-screen is displayed
@@ -454,6 +446,7 @@ class Game {
     gameScreen.style.display = "none";
     gamePassedScreen.style.display = "flex";
     this.audio.pause();
+    finalAudio.play();
   };
 
   gameLoop = () => {

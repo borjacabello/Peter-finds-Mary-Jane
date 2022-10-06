@@ -36,7 +36,27 @@ audio1.volume = 0.5;*/
 
 let audioButton = new Audio();
 audioButton.src = "./audios/button.wav"
-audioButton.volume = 0.4;
+audioButton.volume = 0.1;
+
+let audioGameOver = new Audio();
+audioGameOver.src = "./audios/gameover.mp3";
+audioGameOver.volume = 0.4;
+
+let hitAudio = new Audio();
+hitAudio.src = "./audios/hit.wav";
+hitAudio.volume = 0.4;
+
+let hitAudio2 = new Audio();
+hitAudio2.src = "./audios/hit2.wav";
+hitAudio2.volume = 0.4;
+
+let hitAudio3 = new Audio();
+hitAudio3.src = "./audios/hurt.mp3"
+hitAudio3.volume = 0.4;
+
+let finalAudio = new Audio();
+finalAudio.src = "./audios/finalsong.mp3";
+finalAudio.volume = 0.4;
 
 // Global variables
 let gameObj;
@@ -62,47 +82,57 @@ const replayGame = () => {
   gameObj = new Game(playerSelected, backgroundSelected, levelSelected);
   gameObj.gameLoop();
   gameObj.audio.play();
+  audioGameOver.pause();
 };
 
 const returnToHomePage = () => {
   gamePassedScreen.style.display = "none";
   startScreen.style.display = "grid";
+  finalAudio.pause();
 };
 
 const gameoverHomePage = () => {
   gameOverScreen.style.display = "none";
   startScreen.style.display = "grid";
+  audioGameOver.pause();
 }
 
 // To change selected player inside gameObj, its value is passed to gameObj constructor
 const changeRedPlayer = () => {
   playerSelected = false;
+  audioButton.play();
 }
 
 const changeBlackPlayer = () => {
   playerSelected = true;
+  audioButton.play();
 }
 
 // To change selected background inside gameObj, its value is passed to gameObj constructor
 const changeNightBackground = () => {
   backgroundSelected = false;
+  audioButton.play();
 }
 
 const changeDayBackground = () => {
   backgroundSelected = true;
+  audioButton.play();
 }
 
 // To change selected level inside gameObj, its value is passed to gameObj constructor
 const changeEasyLevel = () => {
   levelSelected = 1;
+  audioButton.play();
 }
 
 const changeMediumLevel = () => {
   levelSelected = 2;
+  audioButton.play();
 }
 
 const changeHardLevel = () => {
   levelSelected = 3;
+  audioButton.play();
 }
 
 // * ADD EVENT LISTENERS
