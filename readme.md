@@ -1,6 +1,6 @@
 # Peter finds Mary Jane
 
-## [See the Game](www.your-url-here.com)
+## [See the Game](https://borjacabello.github.io/Peter-finds-Mary-Jane/)
 
 NOTE: above link will be added later
 
@@ -45,24 +45,23 @@ the time spent in passing the previous game.
 
 ## main.js
 
-- startGame()
-- replayGame()
-- returnToHomePage()
-- gameoverHomePage()
-- changeRedPlayer()
-- changeBlackPlayer()
-- changeNightBackground()
-- changeDayBackground()
-- changeEasyLevel()
-- changeMediumLevel()
-- changeHardLevel()
-- reproduceBackgroundMusic()
-- stopBackgroundMusic()
+- startGame() {}
+- replayGame() {}
+- returnToHomePage() {}
+- gameoverHomePage() {}
+- changeRedPlayer() {}
+- changeBlackPlayer() {}
+- changeNightBackground() {}
+- changeDayBackground() {}
+- changeEasyLevel() {}
+- changeMediumLevel() {}
+- changeHardLevel() {}
+- reproduceBackgroundMusic() {}
+- stopBackgroundMusic() {}
 
 ## game.js
 
-- Game () {
-  constructor(playerSelected, backgroundSelected, levelSelected);
+- Game (playerSelected, backgroundSelected, levelSelected) {
   this.backgroundSelection;
   this.background;
   this.playerSelection;
@@ -80,26 +79,24 @@ the time spent in passing the previous game.
   this.isGameOn;
   this.timer;
   this.audio;
-  this.audio.volume;
-- addEnemy()
-- addSpiderwebToPlayer()
-- addAttackToEnemy()
-- killEnemy()
-- playerEnemyCollision()
-- playerAttackCollision()
-- spiderwebAttackCollision()
-- incrementTimer()
-- addRankingPositions()
-- drawScore()
-- gameOver()
-- gamePassed()
-- gameLoop ()
-}
+  this.audio.volume }
+- addEnemy() {}
+- addSpiderwebToPlayer() {}
+- addAttackToEnemy() {}
+- killEnemy() {}
+- playerEnemyCollision() {}
+- playerAttackCollision() {}
+- spiderwebAttackCollision() {}
+- incrementTimer() {}
+- addRankingPositions() {}
+- drawScore() {}
+- gameOver() {}
+- gamePassed() {}
+- gameLoop () {}
 
 ## player.js
 
-- Player () {
-  constructor(selection);
+- Player (selection) {
   this.img;
   this.w;
   this.h;
@@ -110,16 +107,15 @@ the time spent in passing the previous game.
   this.gravity;
   this.speed;
   this.maxSpeed;
-  this.lives;
+  this.lives
   }
-- playerOnGround ()
-- drawPlayer ()
-- movePlayer ()
+- playerOnGround () {}
+- drawPlayer () {}
+- movePlayer () {}
 
 ## enemy.js
 
-- AirEnemy() {
-  constructor(selectedLevel);
+- AirEnemy(selectedLevel) {
   this.levelSelection;
   let randomizeAirEnemy;
   this.img;
@@ -131,14 +127,12 @@ the time spent in passing the previous game.
   this.vy;
   this.curve;
   this.type;
-  this.existsOnScreen;
+  this.existsOnScreen }
 
-  - moveEnemy();
-  - drawEnemy();
-    }
+  - moveEnemy() {}
+  - drawEnemy() {}
 
-- GroundEnemy() {
-  constructor(selectedLevel);
+- GroundEnemy(selectedLevel) {
   this.levelSelection;
   let randomizeGroundEnemy;
   this.img;
@@ -147,60 +141,55 @@ the time spent in passing the previous game.
   this.x;
   this.y;
   this.type;
-  this.existsOnScreen = true;
+  this.existsOnScreen }
 
-  - moveEnemy()
-  - drawEnemy()
-    }
+  - moveEnemy() {}
+  - drawEnemy() {}
 
-  - TopEnemy() {
-    constructor(selectedLevel);
-    this.levelSelection;
-    let randomizeTopEnemy;
-    this.img;
-    this.w;
-    this.h;
-    this.x;
-    this.y;
-    this.vx;
-    this.directionY;
-    this.type;
-    this.existsOnScreen;
+- TopEnemy(selectedLevel) {
+  this.levelSelection;
+  let randomizeTopEnemy;
+  this.img;
+  this.w;
+  this.h;
+  this.x;
+  this.y;
+  this.vx;
+  this.directionY;
+  this.type;
+  this.existsOnScreen }
 
-    - moveEnemy();
-    - drawEnemy();
-      }
+  - moveEnemy() {}
+  - drawEnemy() {}
 
-  - MaryJane() {
-    constructor();
-    this.img;
-    this.w;
-    this.h;
-    this.x;
-    this.y;
-    this.vx;
-    this.vy;
-    this.directionY;
-    this.type;
-    - drawEnemy();
-    - moveEnemy();
-      }
+- MaryJane() {
+  this.img;
+  this.w;
+  this.h;
+  this.x;
+  this.y;
+  this.vx;
+  this.vy;
+  this.directionY;
+  this.type }
+  - drawEnemy() {}
+  - moveEnemy() {}
 
 ## attack.js
 
-- Spiderweb() {
-  constructor(x, y)
+- Spiderweb(x, y) {
   this.img;
   this.h;
   this.w;
   this.x;
   this.y;
   this.speed;
-  this.existsOnScreen; - moveSpiderweb(); - drawSpiderweb();
-  }
+  this.existsOnScreen }
 
-- EnemyAttack() {
-  constructor(enemyX, enemyY, enemyType);
+  - moveSpiderweb() {}
+  - drawSpiderweb() {}
+
+- EnemyAttack(enemyX, enemyY, enemyType) {
   this.img;
   this.type;
   this.h;
@@ -209,13 +198,13 @@ the time spent in passing the previous game.
   this.y;
   this.vx;
   this.speed;
-  this.existsOnScreen; - moveEnemyAttack(); - drawEnemyAttack();
-  }
+  this.existsOnScreen }
+  - moveEnemyAttack() {}
+  - drawEnemyAttack() {}
 
 ## background.js
 
-- Background() {
-  constructor(selection);
+- Background(selection) {
   this.img;
   this.img2;
   this.w;
@@ -224,40 +213,35 @@ the time spent in passing the previous game.
   this.x2;
   this.hImg2;
   this.y;
-  this.yImg2; 
-  this.speed;
-  - moveBackground();
-  - drawBackground();
-  }
+  this.yImg2;
+  this.speed }
+  - moveBackground() {}
+  - drawBackground() {}
 
-  ## collision.js
+## collision.js
 
-  - AttackCollision() {
-    constructor(x, y);
-    this.img;
-    this.x;
-    this.y;
-    this.w;
-    this.h;
-    - drawAttackCollision();
-  }
+- AttackCollision(x, y) {
+  this.img;
+  this.x;
+  this.y;
+  this.w;
+  this.h }
+  - drawAttackCollision() {}
 
-  - EnemyCollision() {
-    constructor(x, y);
-      this.img = new Image();
-      this.x;
-      this.y;
-      this.w;
-      this.h;
-      - drawEnemyCollision();
-  }
+- EnemyCollision(x, y) {
+  this.img;
+  this.x;
+  this.y;
+  this.w;
+  this.h }
+  - drawEnemyCollision() {}
 
 # States and Transitions
 
-- mainScreen
-- gameScreen
-- passedGameScreen
-- gameOverScreen
+- Main Screen
+- Game Screen
+- Game Over Screen
+- Win Screen
 
 # Extra Links (The links can be added later when available)
 

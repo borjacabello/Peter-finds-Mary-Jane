@@ -32,31 +32,31 @@ const playerName = document.querySelector("#name")
 // Audios
 let audio1 = new Audio();
 audio1.src = "./audios/background-song.mp3";
-audio1.volume = 0.4;
+audio1.volume = 0.05;
 
 let audioButton = new Audio();
 audioButton.src = "./audios/button.wav"
-audioButton.volume = 0.1;
+audioButton.volume = 0.05;
 
 let audioGameOver = new Audio();
 audioGameOver.src = "./audios/gameover.mp3";
-audioGameOver.volume = 0.4;
+audioGameOver.volume = 0.05;
 
 let hitAudio = new Audio();
 hitAudio.src = "./audios/hit.wav";
-hitAudio.volume = 0.4;
+hitAudio.volume = 0.05;
 
 let hitAudio2 = new Audio();
 hitAudio2.src = "./audios/hit2.wav";
-hitAudio2.volume = 0.4;
+hitAudio2.volume = 0.05;
 
 let hitAudio3 = new Audio();
 hitAudio3.src = "./audios/hurt.mp3"
-hitAudio3.volume = 0.4;
+hitAudio3.volume = 0.05;
 
 let finalAudio = new Audio();
 finalAudio.src = "./audios/finalsong.mp3";
-finalAudio.volume = 0.4;
+finalAudio.volume = 0.05;
 
 // Global variables
 let gameObj;

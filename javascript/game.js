@@ -24,7 +24,7 @@ class Game {
     } else {
       this.audio.src = "./audios/level3.wav";
     }
-    this.audio.volume = 0.4;
+    this.audio.volume = 0.05;
   }
 
   // Add enemies to the enemies array
