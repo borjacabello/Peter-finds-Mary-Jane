@@ -2,7 +2,6 @@
 
 ## [See the Game](https://borjacabello.github.io/Peter-finds-Mary-Jane/)
 
-NOTE: above link will be added later
 
 # Description
 
@@ -245,10 +244,6 @@ the time spent in passing the previous game.
 
 # Extra Links (The links can be added later when available)
 
-### Trello
-
-[Link](www.your-url-here.com)
-
 ### Slides
 
-[Link](www.your-url-here.com)
+[Link](https://docs.google.com/presentation/d/1w3StdCVQL8Aun3vxosqvr8sLSlE8SmuCdBnU47f8mjU/edit?usp=sharing)
